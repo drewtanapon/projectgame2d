@@ -1,4 +1,4 @@
-[gd_scene load_steps=193 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=195 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_46oiu"]
 [ext_resource type="Texture2D" uid="uid://c7d264ltpyrup" path="res://assets/Tiles/hillCaneChoco.png" id="1_353n8"]
@@ -96,6 +96,7 @@
 [ext_resource type="Texture2D" uid="uid://b6ym8nvvrahub" path="res://assets/Tiles/cakeCenter_rounded.png" id="94_i8eho"]
 [ext_resource type="Texture2D" uid="uid://bggmt4gsu7458" path="res://assets/Tiles/cakeCliffLeft.png" id="95_nqgr7"]
 [ext_resource type="PackedScene" uid="uid://cwfs01ri8wc5w" path="res://scenes/player.tscn" id="96_vtggb"]
+[ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="97_fpo7e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7d6mq"]
 texture = ExtResource("1_46oiu")
@@ -228,7 +229,7 @@ texture_region_size = Vector2i(70, 70)
 texture = ExtResource("23_6n1ea")
 texture_region_size = Vector2i(70, 70)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.08163, -1.31665, -5.13496, -0.789993, -12.7716, 4.2133, -19.0915, 13.9566, -23.0415, 23.1731, -24.8848, 30.5464, -24.3581, 35, 25.1481, 35, 21.9882, 21.3298, 13.8249, 5.26662)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ayne5"]
 texture = ExtResource("24_vwx5h")
@@ -695,11 +696,19 @@ sources/188 = SubResource("TileSetAtlasSource_p2db5")
 sources/189 = SubResource("TileSetAtlasSource_7y8yd")
 sources/190 = SubResource("TileSetAtlasSource_vqtbo")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fpo7e"]
+
 [node name="level_01" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAADAAIAAQAAAAAAAAAAAAkAYAAAAAAAAAABAAkAYAAAAAAAAAACAAkAYAAAAAAAAAADAAkAYAAAAAAAAAAEAAkAYAAAAAAAAAAFAAkAYAAAAAAAAAAGAAkAYAAAAAAAAAAHAAkAYAAAAAAAAAAPAAkAYAAAAAAAAAAQAAkAYAAAAAAAAAAIAAkAYAAAAAAAAAAJAAkAYAAAAAAAAAAKAAkAYAAAAAAAAAALAAkAYQAAAAAAAAAMAAkAYQAAAAAAAAANAAkAYQAAAAAAAAAOAAkAYQAAAAAAAAAMAAgAYAAAAAAAAAANAAgAYAAAAAAAAAAOAAgAYAAAAAAAAAARAAkAYAAAAAAAAAASAAkAYgAAAAAAAAATAAkAYgAAAAAAAAAUAAkAYgAAAAAAAAAVAAkAYgAAAAAAAAAWAAkAYAAAAAAAAAAXAAkAYAAAAAAAAAAYAAkAYAAAAAAAAAAZAAkAYAAAAAAAAAAaAAkAYAAAAAAAAAAbAAkAYAAAAAAAAAAeAAkAYAAAAAAAAAAfAAkAYAAAAAAAAAAdAAkAYAAAAAAAAAAcAAkAYAAAAAAAAAAPAAgAegAAAAAAAAAQAAgAegAAAAAAAAARAAgAegAAAAAAAAASAAgAYAAAAAAAAAATAAgAYAAAAAAAAAAUAAgAYAAAAAAAAAALAAgAYAAAAAAAAAAVAAgAYAAAAAAAAAAXAAYAmQAAAAAAAAAYAAYAmQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAAIAAQAAAAAAAAAAAAkAYAAAAAAAAAABAAkAYAAAAAAAAAACAAkAYAAAAAAAAAADAAkAYAAAAAAAAAAEAAkAYAAAAAAAAAAFAAkAYAAAAAAAAAAGAAkAYAAAAAAAAAAHAAkAYAAAAAAAAAAPAAkAYAAAAAAAAAAQAAkAYAAAAAAAAAAIAAkAYAAAAAAAAAAJAAkAYAAAAAAAAAAKAAkAYAAAAAAAAAALAAkAYQAAAAAAAAAMAAkAYQAAAAAAAAANAAkAYQAAAAAAAAAOAAkAYQAAAAAAAAAMAAgAYAAAAAAAAAANAAgAYAAAAAAAAAAOAAgAYAAAAAAAAAARAAkAYAAAAAAAAAASAAkAYgAAAAAAAAATAAkAYgAAAAAAAAAUAAkAYgAAAAAAAAAVAAkAYgAAAAAAAAAWAAkAYAAAAAAAAAAXAAkAYAAAAAAAAAAYAAkAYAAAAAAAAAAZAAkAYAAAAAAAAAAaAAkAYAAAAAAAAAAbAAkAYAAAAAAAAAAeAAkAYAAAAAAAAAAfAAkAYAAAAAAAAAAdAAkAYAAAAAAAAAAcAAkAYAAAAAAAAAASAAgAYAAAAAAAAAATAAgAYAAAAAAAAAAUAAgAYAAAAAAAAAALAAgAYAAAAAAAAAAVAAgAYAAAAAAAAAAXAAYAmQAAAAAAAAAYAAYAmQAAAAAAAAA=")
 tile_set = SubResource("TileSet_m7nn3")
+
+[node name="Killzone" parent="." instance=ExtResource("97_fpo7e")]
+position = Vector2(-43, 720)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("WorldBoundaryShape2D_fpo7e")
 
 [node name="player" parent="." instance=ExtResource("96_vtggb")]
 position = Vector2(491, 511)
