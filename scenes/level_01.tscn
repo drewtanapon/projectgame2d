@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=193 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_46oiu"]
 [ext_resource type="Texture2D" uid="uid://c7d264ltpyrup" path="res://assets/Tiles/hillCaneChoco.png" id="1_353n8"]
@@ -95,6 +95,7 @@
 [ext_resource type="Texture2D" uid="uid://cio4oy3swkxx7" path="res://assets/Tiles/cakeCenter.png" id="93_qiay8"]
 [ext_resource type="Texture2D" uid="uid://b6ym8nvvrahub" path="res://assets/Tiles/cakeCenter_rounded.png" id="94_i8eho"]
 [ext_resource type="Texture2D" uid="uid://bggmt4gsu7458" path="res://assets/Tiles/cakeCliffLeft.png" id="95_nqgr7"]
+[ext_resource type="PackedScene" uid="uid://cwfs01ri8wc5w" path="res://scenes/player.tscn" id="96_vtggb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7d6mq"]
 texture = ExtResource("1_46oiu")
@@ -577,6 +578,7 @@ texture_region_size = Vector2i(70, 70)
 texture = ExtResource("92_vwbj2")
 texture_region_size = Vector2i(70, 70)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-35, -35, 35, -35, 35, 35, -35, 35)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hu7qm"]
 texture = ExtResource("93_qiay8")
@@ -698,3 +700,9 @@ sources/190 = SubResource("TileSetAtlasSource_vqtbo")
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAADAAIAAQAAAAAAAAAAAAkAYAAAAAAAAAABAAkAYAAAAAAAAAACAAkAYAAAAAAAAAADAAkAYAAAAAAAAAAEAAkAYAAAAAAAAAAFAAkAYAAAAAAAAAAGAAkAYAAAAAAAAAAHAAkAYAAAAAAAAAAPAAkAYAAAAAAAAAAQAAkAYAAAAAAAAAAIAAkAYAAAAAAAAAAJAAkAYAAAAAAAAAAKAAkAYAAAAAAAAAALAAkAYQAAAAAAAAAMAAkAYQAAAAAAAAANAAkAYQAAAAAAAAAOAAkAYQAAAAAAAAAMAAgAYAAAAAAAAAANAAgAYAAAAAAAAAAOAAgAYAAAAAAAAAARAAkAYAAAAAAAAAASAAkAYgAAAAAAAAATAAkAYgAAAAAAAAAUAAkAYgAAAAAAAAAVAAkAYgAAAAAAAAAWAAkAYAAAAAAAAAAXAAkAYAAAAAAAAAAYAAkAYAAAAAAAAAAZAAkAYAAAAAAAAAAaAAkAYAAAAAAAAAAbAAkAYAAAAAAAAAAeAAkAYAAAAAAAAAAfAAkAYAAAAAAAAAAdAAkAYAAAAAAAAAAcAAkAYAAAAAAAAAAPAAgAegAAAAAAAAAQAAgAegAAAAAAAAARAAgAegAAAAAAAAASAAgAYAAAAAAAAAATAAgAYAAAAAAAAAAUAAgAYAAAAAAAAAALAAgAYAAAAAAAAAAVAAgAYAAAAAAAAAAXAAYAmQAAAAAAAAAYAAYAmQAAAAAAAAA=")
 tile_set = SubResource("TileSet_m7nn3")
+
+[node name="player" parent="." instance=ExtResource("96_vtggb")]
+position = Vector2(491, 511)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(7, -116)

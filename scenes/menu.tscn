@@ -29,7 +29,6 @@ theme_override_font_sizes/font_size = 36
 text = "Start"
 
 [node name="ExitButton" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
 offset_left = 566.0
 offset_top = 408.0
 offset_right = 638.0

@@ -1,69 +1,85 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwfs01ri8wc5w"]
+[gd_scene load_steps=11 format=3 uid="uid://cwfs01ri8wc5w"]
 
 [ext_resource type="Script" uid="uid://bwp0slckuouxe" path="res://script/player.gd" id="1_ur7pv"]
-[ext_resource type="Texture2D" uid="uid://bxkwocn2ifeu0" path="res://assets/PNG/Players/Variable sizes/Green/alienGreen_front.png" id="2_y4r1p"]
-[ext_resource type="Texture2D" uid="uid://dngmlp7hdmu5p" path="res://assets/PNG/Players/Variable sizes/Green/alienGreen_walk1.png" id="3_d2wvv"]
-[ext_resource type="Texture2D" uid="uid://cohpwiqxob0wj" path="res://assets/PNG/Players/Variable sizes/Green/alienGreen_jump.png" id="4_3v2ag"]
-[ext_resource type="Texture2D" uid="uid://cs7v10vt7jfje" path="res://assets/PNG/Players/Variable sizes/Green/alienGreen_walk2.png" id="5_jej6c"]
-[ext_resource type="Texture2D" uid="uid://cdrusveixc8vk" path="res://assets/PNG/Players/Variable sizes/Green/alienGreen_swim2.png" id="6_f1ej7"]
-[ext_resource type="Texture2D" uid="uid://cvw6n6jca0tie" path="res://assets/PNG/Players/Variable sizes/Green/alienGreen_stand.png" id="7_oprun"]
-[ext_resource type="Texture2D" uid="uid://043i34hd7c0" path="res://assets/PNG/Players/Variable sizes/Green/alienGreen_swim1.png" id="8_a8ls1"]
-[ext_resource type="Texture2D" uid="uid://d1kf3v75vgb0p" path="res://assets/PNG/Players/Variable sizes/Green/alienGreen_duck.png" id="9_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://wnl1320yb0u0" path="res://assets/Spritesheets/spritesheet_players.png" id="2_g2els"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("2_g2els")
+region = Rect2(640, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("2_g2els")
+region = Rect2(512, 1536, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("2_g2els")
+region = Rect2(512, 256, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_g2els")
+region = Rect2(512, 512, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("2_g2els")
+region = Rect2(512, 1024, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_g2els")
+region = Rect2(512, 768, 128, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u1c27"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_y4r1p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_d2wvv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_3v2ag")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_jej6c")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_f1ej7")
+"texture": SubResource("AtlasTexture_qhqgy")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_3v2ag")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_oprun")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_a8ls1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_qfm1y")
+"texture": SubResource("AtlasTexture_g2els")
 }],
 "loop": true,
 "name": &"jump",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_op7ga"]
-size = Vector2(162.608, 202.609)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ur7pv"]
+radius = 50.3828
+height = 150.685
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ur7pv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.90735e-06, 1)
+position = Vector2(2, -45)
 scale = Vector2(0.774074, 0.756545)
 sprite_frames = SubResource("SpriteFrames_u1c27")
-animation = &"jump"
-autoplay = "default"
-frame_progress = 0.855441
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.226992
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
-position = Vector2(3.8756, -1.90735e-06)
-shape = SubResource("RectangleShape2D_op7ga")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(1, -4)
+scale = Vector2(0.774074, 0.756545)
+shape = SubResource("CapsuleShape2D_ur7pv")
