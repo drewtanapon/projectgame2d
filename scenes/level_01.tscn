@@ -717,6 +717,7 @@ position = Vector2(491, 511)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(7, -116)
+position_smoothing_enabled = true
 
 [node name="Area2D" parent="." instance=ExtResource("98_5wf50")]
 position = Vector2(810, 516)
