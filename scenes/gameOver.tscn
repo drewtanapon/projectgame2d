@@ -1,44 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceigb2pgs071a"]
+[gd_scene load_steps=5 format=3 uid="uid://ceigb2pgs071a"]
 
 [ext_resource type="Script" uid="uid://0pbkipwcdjun" path="res://script/game_over.gd" id="1_ouftm"]
+[ext_resource type="Texture2D" uid="uid://46uitv83iga7" path="res://assets/PNG/Backgrounds/colored_shroom.png" id="2_dh54o"]
+[ext_resource type="FontFile" uid="uid://bke5biqxs0swd" path="res://fonts/PixelOperator8.ttf" id="3_d1w46"]
+[ext_resource type="FontFile" uid="uid://0nyv3f3d683a" path="res://fonts/PixelOperator8-Bold.ttf" id="4_twys0"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_ouftm")
 
+[node name="Background" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(7, 457)
+scale = Vector2(1.0918, 1.02832)
+texture = ExtResource("2_dh54o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Sprite2D"]
+position = Vector2(1024, 0)
+texture = ExtResource("2_dh54o")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Sprite2D/Sprite2D"]
+position = Vector2(1024, 5.24521e-06)
+texture = ExtResource("2_dh54o")
+
 [node name="MessageLabel" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.504
-anchor_top = 0.703
-anchor_right = 0.504
-anchor_bottom = 0.703
-offset_left = -142.608
-offset_top = -34.544
-offset_right = 143.392
-offset_bottom = 34.456
+anchor_left = 0.512
+anchor_top = 0.757
+anchor_right = 0.512
+anchor_bottom = 0.757
+offset_left = -193.2
+offset_top = -34.3
+offset_right = 194.8
+offset_bottom = 34.7
+theme_override_fonts/font = ExtResource("3_d1w46")
 theme_override_font_sizes/font_size = 50
 text = "GAME OVER"
 
 [node name="MessageLabel1" type="Label" parent="MessageLabel"]
 layout_mode = 2
-anchor_left = 0.601
-anchor_top = 1.848
-anchor_right = 0.601
-anchor_bottom = 1.848
-offset_left = -292.886
-offset_top = -31.512
-offset_right = 263.114
-offset_bottom = 23.488
+anchor_left = 0.5
+anchor_top = 2.152
+anchor_right = 0.5
+anchor_bottom = 2.152
+offset_left = -386.0
+offset_top = -27.488
+offset_right = 384.0
+offset_bottom = 27.512
+theme_override_fonts/font = ExtResource("4_twys0")
 theme_override_font_sizes/font_size = 39
 text = "กด Enter หรือ Space เพื่อเริ่มใหม่"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MessageLabel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -53.5
-offset_right = 156.0
-offset_bottom = 44.5
+anchor_left = 0.523
+anchor_top = 2.239
+anchor_right = 0.523
+anchor_bottom = 2.239
+offset_left = -454.924
+offset_top = -58.491
+offset_right = 455.076
+offset_bottom = 58.509
