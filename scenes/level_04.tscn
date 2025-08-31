@@ -1,9 +1,8 @@
-[gd_scene load_steps=200 format=4 uid="uid://bjrcuxdno1jq2"]
+[gd_scene load_steps=206 format=4 uid="uid://bjrcuxdno1jq2"]
 
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_732gq"]
 [ext_resource type="Texture2D" uid="uid://dp1k368n10cle" path="res://assets/PNG/Backgrounds/colored_desert.png" id="1_fag1x"]
 [ext_resource type="Texture2D" uid="uid://c0fbiqb28lvoq" path="res://assets/Tiles/cakeCliffRight.png" id="2_dyn7t"]
-[ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="2_ib00r"]
 [ext_resource type="Texture2D" uid="uid://cjog2htkeumsg" path="res://assets/Tiles/cakeCliffRightAlt.png" id="3_qw2ou"]
 [ext_resource type="Texture2D" uid="uid://317g73isoo85" path="res://assets/Tiles/cakeHalf.png" id="4_ib00r"]
 [ext_resource type="Texture2D" uid="uid://dlu5t48thep4t" path="res://assets/Tiles/cakeHalfAlt.png" id="5_fag1x"]
@@ -101,6 +100,12 @@
 [ext_resource type="PackedScene" uid="uid://8l5ygughld5o" path="res://scenes/enemy1.tscn" id="97_dyn7t"]
 [ext_resource type="PackedScene" uid="uid://c3gxs0abecvrl" path="res://scenes/candy2.tscn" id="98_qw2ou"]
 [ext_resource type="PackedScene" uid="uid://b4nvxeyafylnk" path="res://scenes/platform1.tscn" id="99_ib00r"]
+[ext_resource type="Texture2D" uid="uid://l3xb3oshxw6c" path="res://assets/door.png" id="101_rpsxb"]
+[ext_resource type="PackedScene" uid="uid://bglevr0h607jp" path="res://scenes/enemy_4.tscn" id="102_l6ve5"]
+[ext_resource type="PackedScene" uid="uid://d3gk1s0rlh4i8" path="res://scenes/enemy2.tscn" id="103_baqd8"]
+[ext_resource type="PackedScene" uid="uid://ctb78bkfqxhfb" path="res://scenes/enemy3.tscn" id="104_0jl83"]
+[ext_resource type="PackedScene" uid="uid://518rxmeoqsrd" path="res://scenes/enemy.tscn" id="105_mdxaf"]
+[ext_resource type="PackedScene" uid="uid://d2ao8d3c02oer" path="res://scenes/candy1.tscn" id="106_baqd8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0eav"]
 texture = ExtResource("1_732gq")
@@ -734,6 +739,21 @@ sources/188 = SubResource("TileSetAtlasSource_4by2d")
 sources/189 = SubResource("TileSetAtlasSource_d2kxg")
 sources/190 = SubResource("TileSetAtlasSource_adkfc")
 
+[sub_resource type="Animation" id="Animation_rpsxb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9675, 201)]
+}
+
 [sub_resource type="Animation" id="Animation_fag1x"]
 resource_name = "new_animation"
 length = 2.0
@@ -749,21 +769,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(9675, 201), Vector2(10121, 202)]
-}
-
-[sub_resource type="Animation" id="Animation_rpsxb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(9675, 201)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jpsq3"]
@@ -843,27 +848,6 @@ position = Vector2(491, 511)
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(7, -116)
 
-[node name="Enemy" parent="." instance=ExtResource("97_dyn7t")]
-position = Vector2(955, 620)
-
-[node name="Enemy2" parent="." instance=ExtResource("97_dyn7t")]
-position = Vector2(3420, 618)
-
-[node name="Enemy5" parent="." instance=ExtResource("97_dyn7t")]
-position = Vector2(4399, 480)
-
-[node name="Enemy6" parent="." instance=ExtResource("97_dyn7t")]
-position = Vector2(12861, 545)
-
-[node name="Area2D" parent="." instance=ExtResource("98_qw2ou")]
-position = Vector2(10604, 520)
-
-[node name="Area2D2" parent="." instance=ExtResource("98_qw2ou")]
-position = Vector2(12113, 460)
-
-[node name="Area2D3" parent="." instance=ExtResource("98_qw2ou")]
-position = Vector2(10119, 107)
-
 [node name="AnimatableBody2D" parent="." instance=ExtResource("99_ib00r")]
 position = Vector2(9675, 201)
 
@@ -872,3 +856,83 @@ libraries = {
 &"": SubResource("AnimationLibrary_jpsq3")
 }
 autoplay = "new_animation"
+
+[node name="Door" type="Sprite2D" parent="."]
+position = Vector2(14221, 500)
+texture = ExtResource("101_rpsxb")
+
+[node name="enemy" type="Node2D" parent="."]
+
+[node name="Enemy" parent="enemy" instance=ExtResource("97_dyn7t")]
+position = Vector2(955, 620)
+
+[node name="Enemy2" parent="enemy" instance=ExtResource("97_dyn7t")]
+position = Vector2(3257, 612)
+
+[node name="Enemy4" parent="enemy" instance=ExtResource("102_l6ve5")]
+position = Vector2(1958, 623)
+
+[node name="Enemy3" parent="enemy" instance=ExtResource("103_baqd8")]
+position = Vector2(3827, 433)
+
+[node name="Enemy5" parent="enemy" instance=ExtResource("104_0jl83")]
+position = Vector2(5255, 124)
+
+[node name="Enemy6" parent="enemy" instance=ExtResource("105_mdxaf")]
+position = Vector2(6623, 619)
+
+[node name="Enemy7" parent="enemy" instance=ExtResource("102_l6ve5")]
+position = Vector2(8094, 614)
+
+[node name="Enemy8" parent="enemy" instance=ExtResource("103_baqd8")]
+position = Vector2(9163, 136)
+
+[node name="Enemy9" parent="enemy" instance=ExtResource("104_0jl83")]
+position = Vector2(10745, 400)
+
+[node name="Enemy10" parent="enemy" instance=ExtResource("97_dyn7t")]
+position = Vector2(11766, 627)
+
+[node name="Enemy11" parent="enemy" instance=ExtResource("105_mdxaf")]
+position = Vector2(13075, 558)
+
+[node name="items" type="Node2D" parent="."]
+
+[node name="Area2D11" parent="items" instance=ExtResource("106_baqd8")]
+position = Vector2(13671, 467)
+
+[node name="Area2D10" parent="items" instance=ExtResource("98_qw2ou")]
+position = Vector2(9953, 608)
+
+[node name="Area2D9" parent="items" instance=ExtResource("106_baqd8")]
+position = Vector2(8823, 299)
+
+[node name="Area2D7" parent="items" instance=ExtResource("106_baqd8")]
+position = Vector2(5188, 218)
+
+[node name="Area2D8" parent="items" instance=ExtResource("98_qw2ou")]
+position = Vector2(5919, 330)
+
+[node name="Area2D6" parent="items" instance=ExtResource("98_qw2ou")]
+position = Vector2(4700, 333)
+
+[node name="Area2D5" parent="items" instance=ExtResource("98_qw2ou")]
+position = Vector2(2983, 613)
+
+[node name="Area2D4" parent="items" instance=ExtResource("106_baqd8")]
+position = Vector2(1282, 612)
+
+[node name="Area2D" parent="items" instance=ExtResource("98_qw2ou")]
+position = Vector2(7950, 613)
+
+[node name="Area2D2" parent="items" instance=ExtResource("106_baqd8")]
+position = Vector2(7345, 393)
+
+[node name="Area2D3" parent="items" instance=ExtResource("98_qw2ou")]
+position = Vector2(10604, 520)
+
+[node name="Area2D12" parent="items" instance=ExtResource("98_qw2ou")]
+position = Vector2(12113, 460)
+
+[node name="Area2D13" parent="items" instance=ExtResource("98_qw2ou")]
+position = Vector2(10119, 107)
