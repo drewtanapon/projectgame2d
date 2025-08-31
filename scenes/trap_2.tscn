@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://7cepsmyalnyc"]
+
+[ext_resource type="Texture2D" uid="uid://cb6sa45cxdits" path="res://assets/Tiles/candyGreen.png" id="1_hvm3d"]
+[ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="2_0yn1u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kmux5"]
+radius = 18.0
+height = 44.0
+
+[node name="trap2" type="Node2D"]
+position = Vector2(0, -21)
+
+[node name="Killzone" parent="." instance=ExtResource("2_0yn1u")]
+position = Vector2(0, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("CapsuleShape2D_kmux5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hvm3d")
