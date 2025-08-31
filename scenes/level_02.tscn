@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=4 uid="uid://buxox1w6fed3m"]
+[gd_scene load_steps=199 format=4 uid="uid://buxox1w6fed3m"]
 
 [ext_resource type="Texture2D" uid="uid://q05uiode8d2u" path="res://assets/PNG/Backgrounds/blue_shroom.png" id="1_wr43k"]
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_y222m"]
