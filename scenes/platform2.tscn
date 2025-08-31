@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7ha42oxe5y7v"]
+
+[ext_resource type="Texture2D" uid="uid://cwmar275ec1rx" path="res://assets/Tiles/cookieChoco.png" id="1_g8307"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffih7"]
+size = Vector2(93, 40)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -15)
+shape = SubResource("RectangleShape2D_ffih7")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g8307")

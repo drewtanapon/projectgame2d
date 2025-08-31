@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4nvxeyafylnk"]
+
+[ext_resource type="Texture2D" uid="uid://chwysr6fb6xm3" path="res://assets/Tiles/cookieBrown.png" id="1_luvg2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_507t5"]
+size = Vector2(96, 42)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_507t5")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_luvg2")
