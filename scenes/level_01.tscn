@@ -1,4 +1,4 @@
-[gd_scene load_steps=206 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=203 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Texture2D" uid="uid://dtupvfu3vmygr" path="res://assets/sheet.png" id="1_5wf50"]
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_46oiu"]
@@ -100,9 +100,6 @@
 [ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="97_fpo7e"]
 [ext_resource type="PackedScene" uid="uid://d2ao8d3c02oer" path="res://scenes/candy1.tscn" id="98_5wf50"]
 [ext_resource type="PackedScene" uid="uid://c3gxs0abecvrl" path="res://scenes/candy2.tscn" id="99_w7fdl"]
-[ext_resource type="PackedScene" uid="uid://b4nvxeyafylnk" path="res://scenes/platform1.tscn" id="100_530ct"]
-[ext_resource type="PackedScene" uid="uid://b7ha42oxe5y7v" path="res://scenes/platform2.tscn" id="101_3uhwl"]
-[ext_resource type="PackedScene" uid="uid://crj8iutxiv1h6" path="res://scenes/platform3.tscn" id="102_aho8i"]
 [ext_resource type="PackedScene" uid="uid://b66lpo72xeahl" path="res://scenes/trap_1.tscn" id="104_sg1i7"]
 [ext_resource type="PackedScene" uid="uid://7cepsmyalnyc" path="res://scenes/trap_2.tscn" id="105_geige"]
 [ext_resource type="PackedScene" uid="uid://bxcgjf022e6lq" path="res://scenes/trap_3.tscn" id="106_4u181"]
@@ -886,15 +883,6 @@ position = Vector2(810, 516)
 
 [node name="Area2D2" parent="." instance=ExtResource("99_w7fdl")]
 position = Vector2(872, 517)
-
-[node name="AnimatableBody2D" parent="." instance=ExtResource("100_530ct")]
-position = Vector2(90, 505)
-
-[node name="AnimatableBody2D2" parent="." instance=ExtResource("101_3uhwl")]
-position = Vector2(198, 505)
-
-[node name="AnimatableBody2D3" parent="." instance=ExtResource("102_aho8i")]
-position = Vector2(341, 502)
 
 [node name="trap2" parent="." instance=ExtResource("105_geige")]
 position = Vector2(1085, 595)
