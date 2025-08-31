@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=202 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_46oiu"]
 [ext_resource type="Texture2D" uid="uid://c7d264ltpyrup" path="res://assets/Tiles/hillCaneChoco.png" id="1_353n8"]
@@ -99,6 +99,46 @@
 [ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="97_fpo7e"]
 [ext_resource type="PackedScene" uid="uid://d2ao8d3c02oer" path="res://scenes/candy1.tscn" id="98_5wf50"]
 [ext_resource type="PackedScene" uid="uid://c3gxs0abecvrl" path="res://scenes/candy2.tscn" id="99_w7fdl"]
+[ext_resource type="PackedScene" uid="uid://bglevr0h607jp" path="res://scenes/enemy_4.tscn" id="100_530ct"]
+[ext_resource type="PackedScene" uid="uid://ctb78bkfqxhfb" path="res://scenes/enemy3.tscn" id="101_1gr7e"]
+
+[sub_resource type="Animation" id="Animation_1gr7e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1415, 586)]
+}
+
+[sub_resource type="Animation" id="Animation_530ct"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1415, 586), Vector2(1415, 526)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3uhwl"]
+_data = {
+&"RESET": SubResource("Animation_1gr7e"),
+&"move": SubResource("Animation_530ct")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7d6mq"]
 texture = ExtResource("1_46oiu")
@@ -702,6 +742,15 @@ sources/190 = SubResource("TileSetAtlasSource_vqtbo")
 
 [node name="level_01" type="Node2D"]
 
+[node name="Enemy4" parent="." instance=ExtResource("100_530ct")]
+position = Vector2(1415, 586)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy4"]
+libraries = {
+&"": SubResource("AnimationLibrary_3uhwl")
+}
+autoplay = "move"
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAADAAIAAQAAAAAAAAAAAAkAYAAAAAAAAAABAAkAYAAAAAAAAAACAAkAYAAAAAAAAAADAAkAYAAAAAAAAAAEAAkAYAAAAAAAAAAFAAkAYAAAAAAAAAAGAAkAYAAAAAAAAAAHAAkAYAAAAAAAAAAPAAkAYAAAAAAAAAAQAAkAYAAAAAAAAAAIAAkAYAAAAAAAAAAJAAkAYAAAAAAAAAAKAAkAYAAAAAAAAAALAAkAYQAAAAAAAAAMAAkAYQAAAAAAAAANAAkAYQAAAAAAAAAOAAkAYQAAAAAAAAAMAAgAYAAAAAAAAAANAAgAYAAAAAAAAAAOAAgAYAAAAAAAAAARAAkAYAAAAAAAAAASAAkAYgAAAAAAAAATAAkAYgAAAAAAAAAUAAkAYgAAAAAAAAAVAAkAYgAAAAAAAAAWAAkAYAAAAAAAAAAXAAkAYAAAAAAAAAAYAAkAYAAAAAAAAAAZAAkAYAAAAAAAAAAaAAkAYAAAAAAAAAAbAAkAYAAAAAAAAAAeAAkAYAAAAAAAAAAfAAkAYAAAAAAAAAAdAAkAYAAAAAAAAAAcAAkAYAAAAAAAAAASAAgAYAAAAAAAAAATAAgAYAAAAAAAAAAUAAgAYAAAAAAAAAALAAgAYAAAAAAAAAAVAAgAYAAAAAAAAAAXAAYAmQAAAAAAAAAYAAYAmQAAAAAAAAA=")
 tile_set = SubResource("TileSet_m7nn3")
@@ -724,3 +773,6 @@ position = Vector2(810, 516)
 
 [node name="Area2D2" parent="." instance=ExtResource("99_w7fdl")]
 position = Vector2(872, 517)
+
+[node name="Enemy3" parent="." instance=ExtResource("101_1gr7e")]
+position = Vector2(1952, 446)

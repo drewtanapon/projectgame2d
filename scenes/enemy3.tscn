@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctb78bkfqxhfb"]
+
+[ext_resource type="Texture2D" uid="uid://dkh66o0jrknpb" path="res://assets/PNG/Enemies/fly.png" id="1_o2iik"]
+[ext_resource type="Texture2D" uid="uid://c56fkxambdqax" path="res://assets/PNG/Enemies/fly_dead.png" id="2_kroph"]
+[ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="3_xx6g3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2wk5q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o2iik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kroph")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b0uxi"]
+radius = 29.4278
+
+[node name="Enemy3" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.484375, 0.546875)
+sprite_frames = SubResource("SpriteFrames_2wk5q")
+autoplay = "default"
+frame_progress = 0.655504
+
+[node name="Killzone" parent="AnimatedSprite2D" instance=ExtResource("3_xx6g3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killzone"]
+position = Vector2(-4.12903, -1.82857)
+scale = Vector2(2.06452, 1.82857)
+shape = SubResource("CircleShape2D_b0uxi")
+
+[node name="RayCastLeft" type="RayCast2D" parent="AnimatedSprite2D"]
+scale = Vector2(2.06452, 1.82857)
+target_position = Vector2(-103, 0)
