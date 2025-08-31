@@ -1,4 +1,4 @@
-[gd_scene load_steps=203 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=204 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Texture2D" uid="uid://dtupvfu3vmygr" path="res://assets/sheet.png" id="1_5wf50"]
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_46oiu"]
@@ -100,6 +100,7 @@
 [ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="97_fpo7e"]
 [ext_resource type="PackedScene" uid="uid://d2ao8d3c02oer" path="res://scenes/candy1.tscn" id="98_5wf50"]
 [ext_resource type="PackedScene" uid="uid://c3gxs0abecvrl" path="res://scenes/candy2.tscn" id="99_w7fdl"]
+[ext_resource type="FontFile" uid="uid://vxrghr4oqby6" path="res://fonts/PixelOperator8-Bold(1).ttf" id="100_geige"]
 [ext_resource type="PackedScene" uid="uid://b66lpo72xeahl" path="res://scenes/trap_1.tscn" id="104_sg1i7"]
 [ext_resource type="PackedScene" uid="uid://7cepsmyalnyc" path="res://scenes/trap_2.tscn" id="105_geige"]
 [ext_resource type="PackedScene" uid="uid://bxcgjf022e6lq" path="res://scenes/trap_3.tscn" id="106_4u181"]
@@ -875,8 +876,20 @@ shape = SubResource("WorldBoundaryShape2D_fpo7e")
 position = Vector2(491, 511)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(7, -116)
-position_smoothing_enabled = true
+position = Vector2(231, -219)
+zoom = Vector2(0.7, 0.7)
+rotation_smoothing_enabled = true
+
+[node name="Label" type="Label" parent="player/Camera2D"]
+offset_left = 510.0
+offset_top = -542.0
+offset_right = 1121.0
+offset_bottom = -490.0
+theme_override_colors/font_color = Color(1, 0.74902, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("100_geige")
+theme_override_font_sizes/font_size = 30
+text = "Your collected x coins."
 
 [node name="Area2D" parent="." instance=ExtResource("98_5wf50")]
 position = Vector2(810, 516)
