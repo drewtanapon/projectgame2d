@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=216 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Script" uid="uid://lx48kuddr66m" path="res://game_manager.gd" id="1_4u181"]
 [ext_resource type="Texture2D" uid="uid://dtupvfu3vmygr" path="res://assets/sheet.png" id="1_5wf50"]
@@ -109,6 +109,7 @@
 [ext_resource type="PackedScene" uid="uid://bxcgjf022e6lq" path="res://scenes/trap_3.tscn" id="106_4u181"]
 [ext_resource type="PackedScene" uid="uid://dxpiqas17uy6r" path="res://scenes/trap_4.tscn" id="107_w4f48"]
 [ext_resource type="PackedScene" uid="uid://8l5ygughld5o" path="res://scenes/enemy1.tscn" id="108_ro7fp"]
+[ext_resource type="PackedScene" uid="uid://518rxmeoqsrd" path="res://scenes/enemy.tscn" id="110_ypgrt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uw4dv"]
 texture = ExtResource("1_5wf50")
@@ -1040,7 +1041,7 @@ position = Vector2(4094, 524)
 [node name="enamy" type="Node" parent="."]
 
 [node name="Enemy" parent="enamy" instance=ExtResource("108_ro7fp")]
-position = Vector2(3952, 613)
+position = Vector2(3723, 611)
 
 [node name="Killzone" parent="." instance=ExtResource("97_fpo7e")]
 position = Vector2(-43, 720)
@@ -1066,3 +1067,6 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("100_geige")
 theme_override_font_sizes/font_size = 30
 text = "Your collected 0/? coins."
+
+[node name="Enemy" parent="." instance=ExtResource("110_ypgrt")]
+position = Vector2(2463, 610)

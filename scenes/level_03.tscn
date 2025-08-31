@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=4 uid="uid://tqvfmjesrt5f"]
+[gd_scene load_steps=215 format=4 uid="uid://bt8s55jbqdsti"]
 
 [ext_resource type="Texture2D" uid="uid://ief775c6i2ee" path="res://assets/PNG/Backgrounds/blue_desert.png" id="1_085ul"]
 [ext_resource type="Script" uid="uid://lx48kuddr66m" path="res://game_manager.gd" id="2_ra7nt"]
