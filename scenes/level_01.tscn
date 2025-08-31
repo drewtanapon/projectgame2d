@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=197 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_46oiu"]
 [ext_resource type="Texture2D" uid="uid://c7d264ltpyrup" path="res://assets/Tiles/hillCaneChoco.png" id="1_353n8"]
@@ -97,6 +97,8 @@
 [ext_resource type="Texture2D" uid="uid://bggmt4gsu7458" path="res://assets/Tiles/cakeCliffLeft.png" id="95_nqgr7"]
 [ext_resource type="PackedScene" uid="uid://cwfs01ri8wc5w" path="res://scenes/player.tscn" id="96_vtggb"]
 [ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="97_fpo7e"]
+[ext_resource type="PackedScene" uid="uid://d2ao8d3c02oer" path="res://scenes/candy1.tscn" id="98_5wf50"]
+[ext_resource type="PackedScene" uid="uid://c3gxs0abecvrl" path="res://scenes/candy2.tscn" id="99_w7fdl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7d6mq"]
 texture = ExtResource("1_46oiu")
@@ -715,3 +717,9 @@ position = Vector2(491, 511)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(7, -116)
+
+[node name="Area2D" parent="." instance=ExtResource("98_5wf50")]
+position = Vector2(810, 516)
+
+[node name="Area2D2" parent="." instance=ExtResource("99_w7fdl")]
+position = Vector2(872, 517)
