@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=4 uid="uid://bjrcuxdno1jq2"]
+[gd_scene load_steps=208 format=4 uid="uid://bjrcuxdno1jq2"]
 
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_732gq"]
 [ext_resource type="Texture2D" uid="uid://dp1k368n10cle" path="res://assets/PNG/Backgrounds/colored_desert.png" id="1_fag1x"]
@@ -107,6 +107,7 @@
 [ext_resource type="PackedScene" uid="uid://ctb78bkfqxhfb" path="res://scenes/enemy3.tscn" id="104_0jl83"]
 [ext_resource type="PackedScene" uid="uid://518rxmeoqsrd" path="res://scenes/enemy.tscn" id="105_mdxaf"]
 [ext_resource type="PackedScene" uid="uid://d2ao8d3c02oer" path="res://scenes/candy1.tscn" id="106_baqd8"]
+[ext_resource type="Script" uid="uid://lx48kuddr66m" path="res://game_manager.gd" id="108_mdxaf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0eav"]
 texture = ExtResource("1_732gq")
@@ -990,3 +991,7 @@ position = Vector2(12113, 460)
 
 [node name="Area2D13" parent="candy" instance=ExtResource("98_qw2ou")]
 position = Vector2(10119, 107)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("108_mdxaf")

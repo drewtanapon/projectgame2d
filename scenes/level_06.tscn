@@ -1,4 +1,4 @@
-[gd_scene load_steps=202 format=4 uid="uid://b7xxd4c6w3k7h"]
+[gd_scene load_steps=202 format=4 uid="uid://c872vyckptxbp"]
 
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_janhv"]
 [ext_resource type="Script" uid="uid://lx48kuddr66m" path="res://game_manager.gd" id="1_thk5o"]
