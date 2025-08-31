@@ -1,6 +1,6 @@
-[gd_scene load_steps=215 format=4 uid="uid://tqvfmjesrt5f"]
+[gd_scene load_steps=252 format=4 uid="uid://tqvfmjesrt5f"]
 
-[ext_resource type="Texture2D" uid="uid://ief775c6i2ee" path="res://assets/PNG/Backgrounds/blue_desert.png" id="1_085ul"]
+[ext_resource type="Texture2D" uid="uid://c5ybjykaepch0" path="res://assets/PNG/Backgrounds/blue_grass.png" id="1_s5n65"]
 [ext_resource type="Script" uid="uid://lx48kuddr66m" path="res://game_manager.gd" id="2_ra7nt"]
 [ext_resource type="Texture2D" uid="uid://dtupvfu3vmygr" path="res://assets/sheet.png" id="3_klwm2"]
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="4_komf3"]
@@ -102,13 +102,17 @@
 [ext_resource type="PackedScene" uid="uid://b4nvxeyafylnk" path="res://scenes/platform1.tscn" id="100_n7t2y"]
 [ext_resource type="PackedScene" uid="uid://b66lpo72xeahl" path="res://scenes/trap_1.tscn" id="101_ewpj0"]
 [ext_resource type="PackedScene" uid="uid://7cepsmyalnyc" path="res://scenes/trap_2.tscn" id="102_nh7tr"]
+[ext_resource type="PackedScene" uid="uid://crj8iutxiv1h6" path="res://scenes/platform3.tscn" id="102_s5n65"]
 [ext_resource type="PackedScene" uid="uid://bxcgjf022e6lq" path="res://scenes/trap_3.tscn" id="103_v26n6"]
 [ext_resource type="PackedScene" uid="uid://dxpiqas17uy6r" path="res://scenes/trap_4.tscn" id="104_jasjc"]
 [ext_resource type="PackedScene" uid="uid://c3gxs0abecvrl" path="res://scenes/candy2.tscn" id="105_lh8gh"]
 [ext_resource type="PackedScene" uid="uid://8l5ygughld5o" path="res://scenes/enemy1.tscn" id="106_jebvg"]
 [ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="107_ewm0j"]
+[ext_resource type="PackedScene" uid="uid://d2ao8d3c02oer" path="res://scenes/candy1.tscn" id="107_klwm2"]
 [ext_resource type="PackedScene" uid="uid://cwfs01ri8wc5w" path="res://scenes/player.tscn" id="108_shxla"]
 [ext_resource type="FontFile" uid="uid://vxrghr4oqby6" path="res://fonts/PixelOperator8-Bold(1).ttf" id="109_rm4rm"]
+[ext_resource type="PackedScene" uid="uid://b7ha42oxe5y7v" path="res://scenes/platform2.tscn" id="110_ra7nt"]
+[ext_resource type="PackedScene" path="res://scenes/enemy.tscn" id="112_komf3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgpah"]
 texture = ExtResource("3_klwm2")
@@ -867,8 +871,9 @@ sources/190 = SubResource("TileSetAtlasSource_v52ue")
 sources/0 = SubResource("TileSetAtlasSource_xgpah")
 sources/2 = SubResource("TileSetAtlasSource_hgw1x")
 
-[sub_resource type="Animation" id="Animation_4u181"]
-length = 2.0
+[sub_resource type="Animation" id="Animation_085ul"]
+resource_name = "move"
+length = 5.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -877,35 +882,13 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2136, 315), Vector2(2500, 315)]
+"values": [Vector2(-1784, 600), Vector2(-1784, 105)]
 }
 
-[sub_resource type="Animation" id="Animation_geige"]
-resource_name = "move"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2137, 314), Vector2(2500, 314)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w4f48"]
-_data = {
-&"RESET": SubResource("Animation_4u181"),
-&"move": SubResource("Animation_geige")
-}
-
-[sub_resource type="Animation" id="Animation_uw4dv"]
+[sub_resource type="Animation" id="Animation_ra7nt"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -917,12 +900,18 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2136, 500)]
+"values": [Vector2(-1785, 517)]
 }
 
-[sub_resource type="Animation" id="Animation_ro7fp"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ra7nt"]
+_data = {
+&"RESET": SubResource("Animation_ra7nt"),
+&"move": SubResource("Animation_085ul")
+}
+
+[sub_resource type="Animation" id="Animation_klwm2"]
 resource_name = "move"
-length = 2.0
+length = 5.0
 loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -931,16 +920,449 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2500, 500), Vector2(2136, 500)]
+"values": [Vector2(-1714, 600), Vector2(-1714, 105)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ypgrt"]
+[sub_resource type="Animation" id="Animation_komf3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1714, 517)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s5n65"]
 _data = {
-&"RESET": SubResource("Animation_uw4dv"),
-&"move": SubResource("Animation_ro7fp")
+&"RESET": SubResource("Animation_komf3"),
+&"move": SubResource("Animation_klwm2")
+}
+
+[sub_resource type="Animation" id="Animation_niesu"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1644, 600), Vector2(-1646, 105)]
+}
+
+[sub_resource type="Animation" id="Animation_fv4uy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1644, 517)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7bg2"]
+_data = {
+&"RESET": SubResource("Animation_fv4uy"),
+&"move": SubResource("Animation_niesu")
+}
+
+[sub_resource type="Animation" id="Animation_s5n65"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(805, 533), Vector2(805, 105)]
+}
+
+[sub_resource type="Animation" id="Animation_n7bg2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(876, 533)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rpimx"]
+_data = {
+&"RESET": SubResource("Animation_n7bg2"),
+&"move": SubResource("Animation_s5n65")
+}
+
+[sub_resource type="Animation" id="Animation_rpimx"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-945, -385), Vector2(-945, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_blj4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-945, 50)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4fway"]
+_data = {
+&"RESET": SubResource("Animation_blj4f"),
+&"move": SubResource("Animation_rpimx")
+}
+
+[sub_resource type="Animation" id="Animation_gnwr8"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-875, -385), Vector2(-875, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_60ntr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-875, -385)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8k71c"]
+_data = {
+&"RESET": SubResource("Animation_60ntr"),
+&"move": SubResource("Animation_gnwr8")
+}
+
+[sub_resource type="Animation" id="Animation_pyn6g"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-805, -385), Vector2(-805, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_g4dbl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-805, -385)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x7orf"]
+_data = {
+&"RESET": SubResource("Animation_g4dbl"),
+&"move": SubResource("Animation_pyn6g")
+}
+
+[sub_resource type="Animation" id="Animation_4fway"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2205, 556), Vector2(2205, -1015)]
+}
+
+[sub_resource type="Animation" id="Animation_8k71c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2205, 556)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyn6g"]
+_data = {
+&"RESET": SubResource("Animation_8k71c"),
+&"move": SubResource("Animation_4fway")
+}
+
+[sub_resource type="Animation" id="Animation_x7orf"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2275, 556), Vector2(2275, -1015)]
+}
+
+[sub_resource type="Animation" id="Animation_boy87"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2275, 556)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iqmup"]
+_data = {
+&"RESET": SubResource("Animation_boy87"),
+&"move": SubResource("Animation_x7orf")
+}
+
+[sub_resource type="Animation" id="Animation_y4j7a"]
+resource_name = "move"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2345, 556), Vector2(2345, -1015)]
+}
+
+[sub_resource type="Animation" id="Animation_sk2dl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2345, 556)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mkogv"]
+_data = {
+&"RESET": SubResource("Animation_sk2dl"),
+&"move": SubResource("Animation_y4j7a")
+}
+
+[sub_resource type="Animation" id="Animation_paj6w"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1225, -1005), Vector2(-1225, -1714)]
+}
+
+[sub_resource type="Animation" id="Animation_nnbhh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1225, -1005)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7l6xg"]
+_data = {
+&"RESET": SubResource("Animation_nnbhh"),
+&"move": SubResource("Animation_paj6w")
+}
+
+[sub_resource type="Animation" id="Animation_wah5y"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1155, -1005), Vector2(-1155, -1714)]
+}
+
+[sub_resource type="Animation" id="Animation_ycpf2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1155, -1005)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_by7as"]
+_data = {
+&"RESET": SubResource("Animation_ycpf2"),
+&"move": SubResource("Animation_wah5y")
+}
+
+[sub_resource type="Animation" id="Animation_hk5s8"]
+resource_name = "move"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1085, -1005), Vector2(-1085, -1714)]
+}
+
+[sub_resource type="Animation" id="Animation_4qga1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1085, -1005)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uurad"]
+_data = {
+&"RESET": SubResource("Animation_4qga1"),
+&"move": SubResource("Animation_hk5s8")
 }
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d2klg"]
@@ -950,50 +1372,134 @@ _data = {
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
-position = Vector2(5.00001, 363)
-scale = Vector2(1.94141, 2.13428)
-texture = ExtResource("1_085ul")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
-position = Vector2(1977, 364)
-scale = Vector2(1.94141, 2.13428)
-texture = ExtResource("1_085ul")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Node2D"]
-position = Vector2(3964, 363)
-scale = Vector2(1.94141, 2.13428)
-texture = ExtResource("1_085ul")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Node2D"]
-position = Vector2(5952, 363)
-scale = Vector2(1.94141, 2.13428)
-texture = ExtResource("1_085ul")
+position = Vector2(679, -588)
+scale = Vector2(7.0293, 6.85681)
+texture = ExtResource("1_s5n65")
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_ra7nt")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAAkAAAADAAEAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAPAAkAYAAAAAAAAAAQAAkAYAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAADAAEAAAAMAAkAAAADAAEAAAANAAkAAAADAAEAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAARAAkAYAAAAAAAAAASAAkAYgAAAAAAAAATAAkAYgAAAAAAAAAUAAkAYgAAAAAAAAAVAAkAYgAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAAAAAAAAAAZAAkAAAAAAAAAAAAaAAkAAAAAAAAAAAAbAAkAAAAAAAAAAAAeAAkAYAAAAAAAAAAfAAkAYAAAAAAAAAAdAAkAYAAAAAAAAAAcAAkAAAADAAEAAAASAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAAYAAYAAAAJAAAAAAAAAAgAAAADAAEAAAAAAAcAAAADAAEAAAAAAAYAAAADAAEAAAAAAAUAAAADAAEAAAD//wkAAAADAAEAAAD//wgAAAADAAEAAAD//wcAAAADAAEAAAD//wYAAAADAAEAAAD//wUAAAADAAEAAAD//wQAAAADAAEAAAAAAAQAAAADAAEAAAAAAAMAAAADAAEAAAAAAAIAAAADAAEAAAAAAAEAAAADAAEAAAD//wEAAAADAAEAAAD//wIAAAADAAEAAAD//wMAAAADAAEAAAAgAAkAAAAAAAAAAAAhAAkAAAAAAAAAAAAbAAQAAAAEAAAAAAAcAAQAAAACAAAAAAACAAgAAAALAAUAAAAdAAQAAAAEAAEAAAAZAAYAAAAHAAAAAAAXAAYAAAAHAAAAAAACAAcAAAALAAMAAAAiAAkAAAAAAAAAAAAOAAkAAAADAAEAAAAcAAUAAAADAAEAAAAcAAYAAAADAAEAAAAcAAcAAAADAAEAAAAcAAgAAAADAAEAAAADAAgAAAALAAAAAAAcAAMAAAAHAAQAAAD//wAAAAADAAEA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AAA8AAkAAAAAAAAAAAA9AAkAAAAAAAAAAAA+AAkAAAAAAAAAAAA/AAkAAAAAAAAAAABAAAkAAAAAAAAAAAA4APv/AAAAAAAAAAA5APv/AAAAAAAAAAA6APv/AAAAAAAAAAA7APv/AAAAAAAAAAA8APv/AAAAAAAAAAA9APv/AAAAAAAAAAA+APv/AAAAAAAAAAA/APv/AAAAAAAAAABAAPv/AAAAAAAAAABBAPv/AAAAAAAAAABCAPv/AAAAAAAAAABDAPv/AAAAAAAAAABEAPv/AAAAAAAAAABFAPv/AAAAAAAAAABGAPv/AAAAAAAAAABBAAkAAAAAAAAAAABCAAkAAAAAAAAAAABDAAkAAAAAAAAAAABEAAkAAAAAAAAAAABFAAkAAAAAAAAAAABGAAkAAAAAAAAAAABHAAkAAAAAAAAAAABIAAkAAAADAAEAAAApAAgAAAAAAAAAAAApAAcAAAAIAAUAAAApAAYAAAAIAAQAAAA6AAgAAAAAAAAAAAA4APz/AAADAAEAAAA5APz/AAADAAEAAAA6APz/AAADAAEAAAA7APz/AAADAAEAAAA8APz/AAADAAEAAAA9APz/AAADAAEAAAA+APz/AAADAAEAAAA/APz/AAADAAEAAABAAPz/AAADAAEAAABBAPz/AAADAAEAAABEAPz/AAADAAEAAABFAPz/AAADAAEAAABGAPz/AAADAAEAAABDAPz/AAADAAEAAABCAPz/AAADAAEAAABHAPv/AAAAAAAAAABIAPv/AAAAAAAAAABHAPz/AAADAAEAAABIAPz/AAADAAEAAABDAAcAAgAAAAAAAABDAAgAAgAAAAEAAABEAAcAAgABAAAAAABEAAgAAgABAAEAAABIAP3/AAADAAEAAABIAP7/AAADAAEAAABIAP//AAADAAEAAABIAAAAAAADAAEAAABIAAEAAAADAAEAAABIAAIAAAADAAEAAABIAAMAAAADAAEAAABIAAQAAAADAAEAAABIAAUAAAADAAEAAABIAAYAAAADAAEAAABIAAcAAAADAAEAAABIAAgAAAADAAEAAAA=")
+tile_map_data = PackedByteArray("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AAAQAP7/AAADAAEAAAAKAAEAAAAEAAEAAAAMAPv/AAADAAEAAAAMAPr/AAAAAAAAAAALAPv/AAADAAEAAAALAPr/AAAAAAAAAAAKAPv/AAAAAAAAAAAMAPz/AAADAAEAAAAJAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAIAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAADAPv/AAAAAAAAAAACAPv/AAAAAAAAAAABAPv/AAAAAAAAAAAAAPv/AAAAAAAAAAD///v/AAAAAAAAAAD+//v/AAAAAAAAAAD9//v/AAAAAAAAAAD8//v/AAADAAEAAAD8//r/AAADAAEAAAD7//r/AAADAAEAAADx//z/AAADAAEAAADx//v/AAADAAEAAADx//r/AAAAAAAAAADw//r/AAAAAAAAAADv//r/AAAAAAAAAADu//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAADAAEAAAD3//r/AAADAAEAAAD2//r/AAAAAAAAAAD1//r/AAAEAAAAAAD3//n/AAAAAAAAAAD4//n/AAAAAAAAAAD8//n/AAAAAAAAAAD7//n/AAAAAAAAAADt//r/AAADAAEAAADt//n/AAADAAEAAADt//j/AAADAAEAAADt//f/AAADAAEAAADt//b/AAADAAEAAADt//X/AAADAAEAAADt//T/AAADAAEAAADt//P/AAADAAEAAADt//L/AAADAAEAAADw//v/AAADAAEAAADw//z/AAADAAEAAADw//3/AAADAAEAAADw//7/AAADAAEAAADw////AAADAAEAAADw/wAAAAADAAEAAADv//v/AAADAAEAAADv//z/AAADAAEAAADv//3/AAADAAEAAADv//7/AAADAAEAAADv////AAADAAEAAADv/wAAAAADAAEAAAAeAAMAAAAAAAAAAAAdAAMAAAAAAAAAAAD7/wgAAAAEAAEAAAD6/wgAAAAAAAAAAAD5/wgAAAAAAAAAAAD4/wgAAAAAAAAAAAD4/wcAAAAEAAEAAAD3/wcAAAAAAAAAAAD2/wcAAAAAAAAAAAD1/wcAAAAAAAAAAAD1/wYAAAAEAAEAAAD0/wYAAAAAAAAAAADz/wYAAAAAAAAAAADy/wYAAAAAAAAAAADx/wYAAAAEAAAAAADv/wcAAAAAAAAAAADu/wcAAAAEAAAAAADt/wgAAAAAAAAAAADs/wgAAAAAAAAAAADr/wgAAAAEAAAAAADw/wcAAAAAAAAAAADu/wgAAAAAAAAAAADv/wgAAAAAAAAAAADw/wgAAAAAAAAAAADx/wgAAAAAAAAAAADx/wcAAAAAAAAAAADy/wcAAAAAAAAAAADz/wcAAAAAAAAAAAD0/wcAAAAAAAAAAAD0/wgAAAAAAAAAAADz/wgAAAAAAAAAAAD1/wgAAAAAAAAAAAD2/wgAAAAAAAAAAAD3/wgAAAAAAAAAAADy/wgAAAAAAAAAAADz/wUAAAALAAAAAAAeAPz/AAADAAEAAAAeAPv/AAADAAEAAAAeAPr/AAADAAEAAAAeAPn/AAADAAEAAAAeAPj/AAADAAEAAAAeAPf/AAADAAEAAAAeAPb/AAADAAEAAAAeAPX/AAADAAEAAAAeAPT/AAADAAEAAAAeAPP/AAADAAEAAAAeAPL/AAADAAEAAAAdAPL/AAADAAEAAAAcAPL/AAADAAEAAAAbAPL/AAAAAAAAAAAaAPL/AAAAAAAAAAAZAPL/AAAAAAAAAAAYAPL/AAAAAAAAAAAXAPL/AAAAAAAAAAAWAPL/AAAAAAAAAAAVAPL/AAAAAAAAAAAUAPL/AAAAAAAAAAATAPL/AAAAAAAAAAASAPL/AAAAAAAAAAARAPL/AAAAAAAAAAAQAPL/AAAAAAAAAAAPAPL/AAAAAAAAAAAOAPL/AAAAAAAAAAANAPL/AAAAAAAAAAAMAPL/AAAAAAAAAAALAPL/AAAAAAAAAAAKAPL/AAAAAAAAAAAJAPL/AAAAAAAAAAAIAPL/AAAAAAAAAAAHAPL/AAAAAAAAAAAGAPL/AAAAAAAAAAAFAPL/AAAAAAAAAAAEAPL/AAAAAAAAAAADAPL/AAAAAAAAAAACAPL/AAAAAAAAAAABAPL/AAAAAAAAAAAAAPL/AAAAAAAAAAD///L/AAAAAAAAAAD+//L/AAAAAAAAAAD9//L/AAAAAAAAAAD8//L/AAAAAAAAAAD7//L/AAAAAAAAAAD6//L/AAAAAAAAAAD5//L/AAAAAAAAAAD4//L/AAAAAAAAAAD3//L/AAAAAAAAAAD2//L/AAAAAAAAAAD1//L/AAAAAAAAAAD0//L/AAAAAAAAAADz//L/AAAAAAAAAADy//L/AAAAAAAAAADx//L/AAAAAAAAAADw//L/AAAAAAAAAADv//L/AAAAAAAAAADu//L/AAAAAAAAAADt//H/AAADAAEAAADt//D/AAADAAEAAADt/+//AAADAAEAAADt/+7/AAADAAEAAADt/+3/AAADAAEAAADt/+z/AAADAAEAAADt/+v/AAADAAEAAADt/+r/AAADAAEAAADt/+n/AAADAAEAAADt/+j/AAADAAEAAADt/+f/AAADAAEAAADx/+f/AAAEAAAAAADy/+f/AAAAAAAAAADz/+f/AAAAAAAAAAD0/+f/AAAAAAAAAAD1/+f/AAAAAAAAAAD2/+f/AAAAAAAAAADt/+b/AAADAAEAAADt/+X/AAADAAEAAADt/+T/AAADAAEAAADt/+P/AAADAAEAAADt/+L/AAADAAEAAADt/+H/AAADAAEAAADt/+D/AAADAAEAAADt/9//AAAAAAAAAADu/9//AAAAAAAAAADv/9//AAAAAAAAAADw/9//AAAAAAAAAADx/9//AAAAAAAAAADy/9//AAAAAAAAAADz/9//AAAAAAAAAAD0/9//AAAAAAAAAAD1/9//AAAAAAAAAAD2/9//AAAAAAAAAAD3/9//AAAAAAAAAAD4/9//AAAAAAAAAAD5/9//AAAAAAAAAAD3/+f/AAAAAAAAAAD4/+f/AAAAAAAAAAD5/+f/AAADAAEAAAD5/+b/AAAAAAAAAAD5/+D/AAADAAEAAADx/+D/AAADAAEAAADx/+H/AAADAAEAAADy/+D/AAADAAEAAAD6/+f/AAADAAEAAAD6/+b/AAADAAEAAAD6/+X/AAADAAEAAAD6/+T/AAADAAEAAAD6/+P/AAADAAEAAAD6/+L/AAADAAEAAAD6/+H/AAADAAEAAAD6/+D/AAADAAEAAAD6/9//AAAAAAAAAAD1/+X/AgAAAAAAAAD1/+b/AgAAAAEAAAD2/+X/AgABAAAAAAD2/+b/AgABAAEAAAAeAPH/AAAAAAAAAAAdAPH/AAAAAAAAAAAcAPH/AAAAAAAAAAAiAP//AAADAAEAAAAiAP7/AAADAAEAAAAiAP3/AAADAAEAAAAiAPz/AAADAAEAAAAiAPv/AAADAAEAAAAiAPr/AAADAAEAAAAiAPn/AAADAAEAAAAiAPj/AAADAAEAAAAiAPf/AAADAAEAAAAiAPb/AAADAAEAAAAiAPX/AAADAAEAAAAiAPT/AAADAAEAAAAiAPP/AAADAAEAAAAiAPL/AAADAAEAAAAiAPH/AAADAAEAAAAiAPD/AAADAAEAAAAiAO//AAADAAEAAAAiAO7/AAADAAEAAAAiAO3/AAADAAEAAAAiAOb/AAADAAEAAAAiAOX/AAADAAEAAAAiAOT/AAADAAEAAAAiAOP/AAADAAEAAAAiAOL/AAADAAEAAAAiAOH/AAADAAEAAAAiAOD/AAADAAEAAAAiAOf/AAADAAEAAAAiAOj/AAADAAEAAAAiAOn/AAADAAEAAAAiAOr/AAADAAEAAAAiAOv/AAADAAEAAAAiAOz/AAADAAEAAAD7/9//AAAAAAAAAAD8/9//AAAAAAAAAAD9/9//AAAAAAAAAAD+/9//AAAAAAAAAAD//9//AAAAAAAAAAAAAN//AAAAAAAAAAABAN//AAAAAAAAAAACAN//AAAAAAAAAAADAN//AAAAAAAAAAAFAN//AAAAAAAAAAAGAN//AAAAAAAAAAAHAN//AAAAAAAAAAAIAN//AAAAAAAAAAAJAN//AAAAAAAAAAAKAN//AAAAAAAAAAALAN//AAAAAAAAAAAMAN//AAAAAAAAAAANAN//AAAAAAAAAAAOAN//AAAAAAAAAAAPAN//AAAAAAAAAAAQAN//AAAAAAAAAAARAN//AAAAAAAAAAASAN//AAAAAAAAAAATAN//AAAAAAAAAAAUAN//AAAAAAAAAAAVAN//AAAAAAAAAAAWAN//AAAAAAAAAAAXAN//AAAAAAAAAAAYAN//AAAAAAAAAAAZAN//AAAAAAAAAAAaAN//AAAAAAAAAAAbAN//AAAAAAAAAAAcAN//AAAAAAAAAAAdAN//AAAAAAAAAAAeAN//AAAAAAAAAAAfAN//AAAAAAAAAAAgAN//AAAAAAAAAAAhAN//AAAAAAAAAAAiAN//AAAAAAAAAAAEAN//AAAAAAAAAAAhAOD/AAADAAEAAAD7/+D/AAADAAEAAADr/wAAAAAJAAUAAADr////AAAIAAUAAADr//7/AAAIAAUAAADr//3/AAAJAAQAAADr//z/AAAMAAAAAAAJAAAAAAAKAAUAAAAJAP//AAAIAAQAAAABAAAAAAAHAAQAAADx//n/AAAHAAQAAAAcAPD/AAAHAAQAAADy/+b/AAALAAUAAAD0/+b/AAALAAUAAAD0/+X/AAALAAUAAAD0/+T/AAALAAUAAAD0/+P/AAALAAQAAAD0/+L/AAALAAUAAAD0/+H/AAALAAUAAAD0/+D/AAALAAQAAAD3/+b/AAALAAUAAAD3/+T/AAALAAUAAAD3/+X/AAALAAQAAAD3/+P/AAALAAUAAAD3/+L/AAALAAUAAAD3/+H/AAALAAQAAAD3/+D/AAALAAUAAAD5/+H/AAALAAUAAAD5/+L/AAALAAQAAAD5/+P/AAALAAUAAAD5/+T/AAALAAUAAAD5/+X/AAALAAUAAADy/+H/AAALAAUAAADy/+L/AAALAAUAAADy/+P/AAALAAUAAADy/+T/AAALAAUAAADy/+X/AAALAAQAAAD4/+b/AAAMAAAAAADz/+b/AAAHAAQAAAD0//H/AAAJAAUAAAD0//D/AAAJAAQAAAD1//H/AAADAAYAAADu//n/AAALAAYAAADz/wAAAAAAAAYAAADz////AAAAAAQAAAA=")
 tile_set = SubResource("TileSet_pugay")
 
 [node name="platform" type="Node" parent="."]
 
-[node name="AnimatableBody2D" parent="platform" instance=ExtResource("100_n7t2y")]
-position = Vector2(2136, 315)
+[node name="AnimatableBody2D" parent="platform" instance=ExtResource("110_ra7nt")]
+position = Vector2(-1785, 517)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D"]
 libraries = {
-&"": SubResource("AnimationLibrary_w4f48")
+&"": SubResource("AnimationLibrary_ra7nt")
 }
-autoplay = "RESET"
+autoplay = "move"
 
-[node name="AnimatableBody2D2" parent="platform" instance=ExtResource("100_n7t2y")]
-position = Vector2(2136, 500)
+[node name="AnimatableBody2D2" parent="platform" instance=ExtResource("110_ra7nt")]
+position = Vector2(-1714, 517)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D2"]
 libraries = {
-&"": SubResource("AnimationLibrary_ypgrt")
+&"": SubResource("AnimationLibrary_s5n65")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D3" parent="platform" instance=ExtResource("110_ra7nt")]
+position = Vector2(-1644, 517)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D3"]
+libraries = {
+&"": SubResource("AnimationLibrary_n7bg2")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D4" parent="platform" instance=ExtResource("100_n7t2y")]
+position = Vector2(876, 533)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D4"]
+libraries = {
+&"": SubResource("AnimationLibrary_rpimx")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D5" parent="platform" instance=ExtResource("100_n7t2y")]
+position = Vector2(-945, 50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D5"]
+libraries = {
+&"": SubResource("AnimationLibrary_4fway")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D6" parent="platform" instance=ExtResource("100_n7t2y")]
+position = Vector2(-875, -385)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D6"]
+libraries = {
+&"": SubResource("AnimationLibrary_8k71c")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D7" parent="platform" instance=ExtResource("100_n7t2y")]
+position = Vector2(-805, -385)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D7"]
+libraries = {
+&"": SubResource("AnimationLibrary_x7orf")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D8" parent="platform" instance=ExtResource("110_ra7nt")]
+position = Vector2(2205, 556)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D8"]
+libraries = {
+&"": SubResource("AnimationLibrary_pyn6g")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D9" parent="platform" instance=ExtResource("110_ra7nt")]
+position = Vector2(2275, 556)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D9"]
+libraries = {
+&"": SubResource("AnimationLibrary_iqmup")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D10" parent="platform" instance=ExtResource("110_ra7nt")]
+position = Vector2(2345, 556)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D10"]
+libraries = {
+&"": SubResource("AnimationLibrary_mkogv")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D11" parent="platform" instance=ExtResource("102_s5n65")]
+position = Vector2(-1225, -1005)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D11"]
+libraries = {
+&"": SubResource("AnimationLibrary_7l6xg")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D12" parent="platform" instance=ExtResource("102_s5n65")]
+position = Vector2(-1155, -1005)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D12"]
+libraries = {
+&"": SubResource("AnimationLibrary_by7as")
+}
+autoplay = "move"
+
+[node name="AnimatableBody2D13" parent="platform" instance=ExtResource("102_s5n65")]
+position = Vector2(-1085, -1005)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform/AnimatableBody2D13"]
+libraries = {
+&"": SubResource("AnimationLibrary_uurad")
 }
 autoplay = "move"
 
@@ -1009,38 +1515,185 @@ position = Vector2(1085, 595)
 position = Vector2(1225, 595)
 
 [node name="trap4" parent="trap" instance=ExtResource("104_jasjc")]
-position = Vector2(1575, 595)
+position = Vector2(1436, 596)
 
 [node name="trap5" parent="trap" instance=ExtResource("101_ewpj0")]
-position = Vector2(1631, 605)
+position = Vector2(1494, 606)
 
 [node name="trap6" parent="trap" instance=ExtResource("102_nh7tr")]
-position = Vector2(1714, 595)
+position = Vector2(1575, 595)
 
 [node name="trap7" parent="trap" instance=ExtResource("103_v26n6")]
-position = Vector2(1786, 595)
+position = Vector2(1646, 595)
 
 [node name="trap8" parent="trap" instance=ExtResource("104_jasjc")]
-position = Vector2(1855, 595)
+position = Vector2(1785, 595)
 
 [node name="trap9" parent="trap" instance=ExtResource("101_ewpj0")]
 position = Vector2(1911, 605)
 
+[node name="trap10" parent="trap" instance=ExtResource("104_jasjc")]
+position = Vector2(1016, 595)
+
+[node name="trap11" parent="trap" instance=ExtResource("102_nh7tr")]
+position = Vector2(1855, 595)
+
+[node name="trap12" parent="trap" instance=ExtResource("103_v26n6")]
+position = Vector2(2208, 595)
+
+[node name="trap13" parent="trap" instance=ExtResource("104_jasjc")]
+position = Vector2(2276, 595)
+
+[node name="trap14" parent="trap" instance=ExtResource("102_nh7tr")]
+position = Vector2(2346, 595)
+
+[node name="trap15" parent="trap" instance=ExtResource("101_ewpj0")]
+position = Vector2(443, 45)
+
+[node name="trap16" parent="trap" instance=ExtResource("102_nh7tr")]
+position = Vector2(386, 35)
+
+[node name="trap17" parent="trap" instance=ExtResource("103_v26n6")]
+position = Vector2(316, 35)
+
+[node name="trap18" parent="trap" instance=ExtResource("104_jasjc")]
+position = Vector2(245, 35)
+
+[node name="trap19" parent="trap" instance=ExtResource("101_ewpj0")]
+position = Vector2(-188, 45)
+
+[node name="trap20" parent="trap" instance=ExtResource("102_nh7tr")]
+position = Vector2(-244, 35)
+
+[node name="trap21" parent="trap" instance=ExtResource("103_v26n6")]
+position = Vector2(-315, 35)
+
+[node name="trap22" parent="trap" instance=ExtResource("104_jasjc")]
+position = Vector2(-385, 35)
+
+[node name="trap23" parent="trap" instance=ExtResource("101_ewpj0")]
+position = Vector2(-468, -445)
+
+[node name="trap24" parent="trap" instance=ExtResource("102_nh7tr")]
+position = Vector2(-385, -455)
+
+[node name="trap25" parent="trap" instance=ExtResource("101_ewpj0")]
+position = Vector2(1911, -1005)
+
+[node name="trap26" parent="trap" instance=ExtResource("102_nh7tr")]
+position = Vector2(1855, -1015)
+
+[node name="trap27" parent="trap" instance=ExtResource("103_v26n6")]
+position = Vector2(1575, -1015)
+
+[node name="trap28" parent="trap" instance=ExtResource("104_jasjc")]
+position = Vector2(1225, -1015)
+
+[node name="trap29" parent="trap" instance=ExtResource("101_ewpj0")]
+position = Vector2(1142, -1005)
+
+[node name="trap32" parent="trap" instance=ExtResource("104_jasjc")]
+position = Vector2(456, -1015)
+
+[node name="trap33" parent="trap" instance=ExtResource("101_ewpj0")]
+position = Vector2(372, -1005)
+
+[node name="trap30" parent="trap" instance=ExtResource("102_nh7tr")]
+position = Vector2(1086, -1015)
+
+[node name="trap31" parent="trap" instance=ExtResource("103_v26n6")]
+position = Vector2(1014, -1015)
+
+[node name="trap34" parent="trap" instance=ExtResource("102_nh7tr")]
+position = Vector2(106, -1015)
+
+[node name="trap35" parent="trap" instance=ExtResource("103_v26n6")]
+position = Vector2(-385, -1015)
+
 [node name="item" type="Node" parent="."]
 
 [node name="Area2D" parent="item" instance=ExtResource("105_lh8gh")]
-position = Vector2(875, 508)
+position = Vector2(874, 529)
 
 [node name="Area2D2" parent="item" instance=ExtResource("105_lh8gh")]
-position = Vector2(2502, 246)
+position = Vector2(2064, 530)
 
 [node name="Area2D3" parent="item" instance=ExtResource("105_lh8gh")]
-position = Vector2(4094, 524)
+position = Vector2(317, -396)
+
+[node name="Area2D4" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(-1926, 592)
+
+[node name="Area2D5" parent="item" instance=ExtResource("107_klwm2")]
+position = Vector2(-1265, 20)
+
+[node name="Area2D6" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(1361, 531)
+
+[node name="Area2D7" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(-876, 398)
+
+[node name="Area2D8" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(596, 32)
+
+[node name="Area2D9" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(34, -119)
+
+[node name="Area2D10" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(-594, 29)
+
+[node name="Area2D11" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(-1223, -455)
+
+[node name="Area2D12" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(-245, -533)
+
+[node name="Area2D13" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(1155, -259)
+
+[node name="Area2D14" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(1437, -114)
+
+[node name="Area2D15" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(1717, 28)
+
+[node name="Area2D16" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(2281, -20)
+
+[node name="Area2D17" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(2065, -1094)
+
+[node name="Area2D18" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(1434, -1018)
+
+[node name="Area2D19" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(735, -1017)
+
+[node name="Area2D20" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(-1155, -1357)
+
+[node name="Area2D21" parent="item" instance=ExtResource("105_lh8gh")]
+position = Vector2(-176, -1017)
 
 [node name="enamy" type="Node" parent="."]
 
 [node name="Enemy" parent="enamy" instance=ExtResource("106_jebvg")]
-position = Vector2(3952, 613)
+position = Vector2(-234, 613)
+
+[node name="Enemy2" parent="enamy" instance=ExtResource("112_komf3")]
+position = Vector2(702, -371)
+
+[node name="Enemy3" parent="enamy" instance=ExtResource("106_jebvg")]
+position = Vector2(-106, -365)
+
+[node name="Enemy4" parent="enamy" instance=ExtResource("106_jebvg")]
+position = Vector2(594, -996)
+
+[node name="Enemy5" parent="enamy" instance=ExtResource("112_komf3")]
+position = Vector2(-244, -1001)
+
+[node name="Enemy6" parent="enamy" instance=ExtResource("112_komf3")]
+position = Vector2(1715, -1000)
 
 [node name="Killzone" parent="." instance=ExtResource("107_ewm0j")]
 position = Vector2(-43, 720)
