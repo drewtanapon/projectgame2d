@@ -6,4 +6,4 @@ var maxScore = 10
 
 func add_point():
 	score+=1
-	scorelabel.text = "You collected " + str(score) + "/"+str(maxScore)+" coins."
+	scorelabel.text = "You collected " + str(score) + "/" + str(maxScore) +" coins."
