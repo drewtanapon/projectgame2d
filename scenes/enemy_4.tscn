@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bglevr0h607jp"]
+
+[ext_resource type="Texture2D" uid="uid://bbrcrmm2g7r13" path="res://assets/PNG/Enemies/barnacle.png" id="1_0cinm"]
+[ext_resource type="Texture2D" uid="uid://cdbdg02gnhac3" path="res://assets/PNG/Enemies/barnacle_attack.png" id="2_lkpdo"]
+[ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="3_lkpdo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uj3uc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0cinm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lkpdo")
+}],
+"loop": true,
+"name": &"play",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ur2lb"]
+radius = 41.7852
+
+[node name="Enemy4" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 5.72205e-06)
+scale = Vector2(0.554688, 0.601563)
+sprite_frames = SubResource("SpriteFrames_uj3uc")
+animation = &"play"
+autoplay = "play"
+
+[node name="Killzone" parent="AnimatedSprite2D" instance=ExtResource("3_lkpdo")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killzone"]
+position = Vector2(0, 6.64934)
+scale = Vector2(1.80282, 1.66234)
+shape = SubResource("CircleShape2D_ur2lb")
+
+[node name="RayCast2Dup" type="RayCast2D" parent="AnimatedSprite2D"]
+target_position = Vector2(0, -226.078)

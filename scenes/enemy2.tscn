@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3gk1s0rlh4i8"]
+
+[ext_resource type="Script" uid="uid://bgjiq4jpi676i" path="res://script/enemy_2.gd" id="1_4e2ig"]
+[ext_resource type="Texture2D" uid="uid://coyw5w3ewox72" path="res://assets/PNG/Enemies/bee.png" id="1_mhmjl"]
+[ext_resource type="Texture2D" uid="uid://23hdt51xjsj7" path="res://assets/PNG/Enemies/bee_move.png" id="2_23kvp"]
+[ext_resource type="PackedScene" uid="uid://1l6f4kk4aekd" path="res://scenes/killzone.tscn" id="4_23kvp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lsk8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mhmjl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_23kvp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4e2ig"]
+radius = 59.0
+
+[node name="Enemy2" type="Node2D"]
+script = ExtResource("1_4e2ig")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.76837e-07, 1)
+scale = Vector2(0.605469, 0.589844)
+sprite_frames = SubResource("SpriteFrames_lsk8u")
+autoplay = "default"
+
+[node name="Killzone" parent="AnimatedSprite2D" instance=ExtResource("4_23kvp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Killzone"]
+shape = SubResource("CircleShape2D_4e2ig")
+
+[node name="RayCastLeft" type="RayCast2D" parent="AnimatedSprite2D"]
+target_position = Vector2(-147, 0)
