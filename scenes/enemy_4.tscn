@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bglevr0h607jp"]
+[gd_scene load_steps=6 format=3 uid="uid://30l7m3djssbt"]
 
 [ext_resource type="Texture2D" uid="uid://bbrcrmm2g7r13" path="res://assets/PNG/Enemies/barnacle.png" id="1_0cinm"]
 [ext_resource type="Texture2D" uid="uid://cdbdg02gnhac3" path="res://assets/PNG/Enemies/barnacle_attack.png" id="2_lkpdo"]
