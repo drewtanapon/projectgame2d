@@ -31,3 +31,4 @@ func _on_body_entered(body: Node2D) -> void:
 	# 🔄 คืนความเร็วปกติ แล้วไปหน้า Game Over
 	Engine.time_scale = 1.0
 	get_tree().change_scene_to_file("res://scenes/gameOver.tscn")
+	
