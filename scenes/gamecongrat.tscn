@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfoxlxdm5xlku"]
+
+[ext_resource type="Texture2D" uid="uid://wnbcicdt3114" path="res://assets/PNG/Backgrounds/blue_land.png" id="1_7vtdv"]
+[ext_resource type="Texture2D" uid="uid://ief775c6i2ee" path="res://assets/PNG/Backgrounds/blue_desert.png" id="2_qyuc3"]
+[ext_resource type="FontFile" uid="uid://vxrghr4oqby6" path="res://fonts/PixelOperator8-Bold(1).ttf" id="3_qyuc3"]
+
+[sub_resource type="GDScript" id="GDScript_qyuc3"]
+script/source = "extends CanvasLayer
+
+@onready var message_label = $MessageLabel1
+@onready var background = $Background
+
+# ฟังก์ชันที่ถูกเรียกเมื่อ Node เข้าสู่ต้นไม้ของซีนครั้งแรก
+func _ready() -> void:
+	message_label.text = \"You are the winner\"  # แสดงข้อความเมื่อจบเกม
+	set_process_input(true)  # เปิดการประมวลผลการกดปุ่ม
+
+# ฟังก์ชันที่ถูกเรียกทุกเฟรม 'delta' คือเวลาที่ผ่านไปตั้งแต่เฟรมก่อนหน้า
+func _process(delta: float) -> void:
+	pass
+
+# ฟังก์ชันที่ใช้ฟังเหตุการณ์จากการกดปุ่ม
+func _input(event) -> void:
+	# ตรวจสอบว่าเหตุการณ์เป็นการกดปุ่ม
+	if event is InputEventKey:
+		if event.pressed:  # ถ้าปุ่มถูกกด
+			# ตรวจสอบการกดปุ่ม ENTER หรือ SPACE
+			if event.scancode == KEY_ENTER or event.scancode == KEY_SPACE:
+				_restart_game()
+
+# ฟังก์ชันที่ใช้ในการเริ่มต้นเกมใหม่
+func _restart_game() -> void:
+	get_tree().reload_current_scene()  # โหลดซีนปัจจุบันใหม่ (level_06.tscn)
+"
+
+[node name="gamecongrat" type="CanvasLayer"]
+script = SubResource("GDScript_qyuc3")
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(362, -6)
+scale = Vector2(1.38829, 1.20125)
+texture = ExtResource("1_7vtdv")
+region_enabled = true
+region_rect = Rect2(-7.31409, 0.78123, 1055.65, 625.092)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Sprite2D"]
+position = Vector2(1006.99, -0.290649)
+scale = Vector2(0.964438, 0.984144)
+texture = ExtResource("1_7vtdv")
+region_enabled = true
+region_rect = Rect2(0, 0, 1005.67, 635.419)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Sprite2D/Sprite2D"]
+position = Vector2(-2098.7, 0.301764)
+scale = Vector2(1, 1.00538)
+texture = ExtResource("1_7vtdv")
+region_enabled = true
+region_rect = Rect2(0, 0, 1017.07, 631.621)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background"]
+position = Vector2(822, 492)
+scale = Vector2(1.76092, 1.8157)
+texture = ExtResource("2_qyuc3")
+region_enabled = true
+region_rect = Rect2(0, 437.949, 1013.27, 586.051)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-864, 758)
+scale = Vector2(1.69063, 1.79173)
+texture = ExtResource("1_7vtdv")
+region_enabled = true
+region_rect = Rect2(0, 574.659, 1024.66, 440.51)
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.519
+anchor_top = 0.43
+anchor_right = 0.519
+anchor_bottom = 0.43
+offset_left = -544.4
+offset_top = -38.0
+offset_right = 543.6
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.788639, 0.56376, 0.0283057, 1)
+theme_override_fonts/font = ExtResource("3_qyuc3")
+theme_override_font_sizes/font_size = 70
+text = "Level completed "
+
+[node name="MessageLabel1" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.681
+anchor_right = 0.5
+anchor_bottom = 0.681
+offset_left = -444.0
+offset_top = -39.9
+offset_right = 451.0
+offset_bottom = 40.1
+theme_override_colors/font_color = Color(0.811765, 0.541176, 0.133333, 1)
+theme_override_fonts/font = ExtResource("3_qyuc3")
+theme_override_font_sizes/font_size = 55
+text = "You are the winner"
