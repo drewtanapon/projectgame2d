@@ -1,4 +1,4 @@
-[gd_scene load_steps=223 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=221 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Script" uid="uid://lx48kuddr66m" path="res://game_manager.gd" id="1_4u181"]
 [ext_resource type="Texture2D" uid="uid://dtupvfu3vmygr" path="res://assets/sheet.png" id="1_5wf50"]
@@ -111,6 +111,7 @@
 [ext_resource type="PackedScene" uid="uid://8l5ygughld5o" path="res://scenes/enemy1.tscn" id="108_ro7fp"]
 [ext_resource type="FontFile" uid="uid://bke5biqxs0swd" path="res://fonts/PixelOperator8.ttf" id="110_ypgrt"]
 [ext_resource type="PackedScene" uid="uid://ccciwh1eh1d0g" path="res://scenes/door.tscn" id="111_5wpol"]
+[ext_resource type="FontFile" uid="uid://0nyv3f3d683a" path="res://fonts/PixelOperator8-Bold.ttf" id="112_7wyqa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uw4dv"]
 texture = ExtResource("1_5wf50")
@@ -947,82 +948,6 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fpo7e"]
 
-[sub_resource type="Animation" id="Animation_10gu7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-439, -362)]
-}
-
-[sub_resource type="Animation" id="Animation_7wyqa"]
-resource_name = "move"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-439, -362), Vector2(-43, -362)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4yxmp"]
-_data = {
-&"RESET": SubResource("Animation_10gu7"),
-&"move": SubResource("Animation_7wyqa")
-}
-
 [sub_resource type="Animation" id="Animation_5wpol"]
 length = 0.001
 tracks/0/type = "value"
@@ -1047,12 +972,24 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(628, 427)]
+"values": [Vector2(110, -121)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ypgrt"]
 resource_name = "zoom"
-loop_mode = 2
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1060,10 +997,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.61, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0.1, 0.1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1072,10 +1009,22 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.61, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(628, 427), Vector2(748, 453)]
+"values": [Vector2(-393, -515), Vector2(-393, -515), Vector2(415, -127)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.61, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7wyqa"]
@@ -1216,27 +1165,30 @@ theme_override_fonts/font = ExtResource("100_geige")
 theme_override_font_sizes/font_size = 30
 text = "Your collected 0/? coins."
 
-[node name="LevelLabel" type="Label" parent="player/Camera2D"]
+[node name="LevelLabel" type="Label" parent="player"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -439.0
-offset_top = -362.0
-offset_right = 439.0
-offset_bottom = -225.0
+offset_left = 415.0
+offset_top = -127.0
+offset_right = 1225.0
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 25
-theme_override_fonts/font = ExtResource("100_geige")
-theme_override_font_sizes/font_size = 130
-text = "LEVEL-1"
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("112_7wyqa")
+theme_override_font_sizes/font_size = 120
+text = "LEVEL-1
+"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="player/Camera2D/LevelLabel"]
-active = false
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player/LevelLabel"]
 libraries = {
-&"": SubResource("AnimationLibrary_4yxmp")
+&"": SubResource("AnimationLibrary_7wyqa")
 }
+autoplay = "zoom"
 
 [node name="howToMove" type="Label" parent="."]
 offset_left = -124.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=290 format=4 uid="uid://c872vyckptxbp"]
+[gd_scene load_steps=294 format=4 uid="uid://c872vyckptxbp"]
 
 [ext_resource type="Texture2D" uid="uid://ctd4mujd73qr1" path="res://assets/PNG/Backgrounds/background_clouds.png" id="1_652ow"]
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_janhv"]
@@ -115,6 +115,7 @@
 [ext_resource type="PackedScene" uid="uid://bglevr0h607jp" path="res://scenes/enemy_4.tscn" id="111_bjly0"]
 [ext_resource type="PackedScene" uid="uid://518rxmeoqsrd" path="res://scenes/enemy.tscn" id="113_p5usg"]
 [ext_resource type="PackedScene" uid="uid://ccciwh1eh1d0g" path="res://scenes/door.tscn" id="115_nry40"]
+[ext_resource type="FontFile" uid="uid://0nyv3f3d683a" path="res://fonts/PixelOperator8-Bold.ttf" id="115_rwqd8"]
 
 [sub_resource type="Animation" id="Animation_t1p0t"]
 length = 0.001
@@ -1750,7 +1751,8 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_isvcc"]
-length = 0.001
+length = 2.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1789,6 +1791,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_vrjxl"]
 length = 0.001
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1826,6 +1829,91 @@ _data = {
 }
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d2klg"]
+
+[sub_resource type="Animation" id="Animation_5wpol"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(110, -121)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ypgrt"]
+resource_name = "zoom"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.61, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.61, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-393, -515), Vector2(-393, -515), Vector2(415, -127)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.61, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7wyqa"]
+_data = {
+&"RESET": SubResource("Animation_5wpol"),
+&"zoom": SubResource("Animation_ypgrt")
+}
 
 [node name="level_06" type="Node2D"]
 
@@ -2103,7 +2191,7 @@ position = Vector2(-4515, -2975)
 libraries = {
 &"": SubResource("AnimationLibrary_u2ivy")
 }
-autoplay = "move"
+autoplay = "RESET"
 
 [node name="AnimatableBody2D23" parent="platform" instance=ExtResource("103_mxwex")]
 position = Vector2(-4585, -2975)
@@ -2112,7 +2200,7 @@ position = Vector2(-4585, -2975)
 libraries = {
 &"": SubResource("AnimationLibrary_3mt51")
 }
-autoplay = "move"
+autoplay = "RESET"
 
 [node name="trap" type="Node" parent="."]
 
@@ -2463,5 +2551,30 @@ theme_override_fonts/font = ExtResource("98_0ls1j")
 theme_override_font_sizes/font_size = 30
 text = "Your collected 0/? coins."
 
+[node name="LevelLabel" type="Label" parent="player"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = -121.0
+offset_right = 920.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 40
+theme_override_fonts/font = ExtResource("115_rwqd8")
+theme_override_font_sizes/font_size = 120
+text = "LEVEL-6
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player/LevelLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_7wyqa")
+}
+autoplay = "zoom"
+
 [node name="Door" parent="." instance=ExtResource("115_nry40")]
-position = Vector2(-3640, -2976)
+position = Vector2(-3640, -2974)
