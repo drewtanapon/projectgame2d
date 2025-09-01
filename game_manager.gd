@@ -57,3 +57,4 @@ func level_complete():
 		get_tree().change_scene_to_file(next_scene)
 	else:
 		print("ไม่มีด่านถัดไปแล้ว 🎉")
+		get_tree().change_scene_to_file("res://scenes/gamecongrat.tscn")
