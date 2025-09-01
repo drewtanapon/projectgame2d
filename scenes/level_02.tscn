@@ -1,4 +1,4 @@
-[gd_scene load_steps=217 format=4 uid="uid://buxox1w6fed3m"]
+[gd_scene load_steps=216 format=4 uid="uid://buxox1w6fed3m"]
 
 [ext_resource type="Texture2D" uid="uid://q05uiode8d2u" path="res://assets/PNG/Backgrounds/blue_shroom.png" id="1_wr43k"]
 [ext_resource type="Texture2D" uid="uid://vmarvtkelk0" path="res://assets/Tiles/cakeCliffLeftAlt.png" id="1_y222m"]
@@ -112,7 +112,6 @@
 [ext_resource type="PackedScene" uid="uid://ccciwh1eh1d0g" path="res://scenes/door.tscn" id="103_n7l6t"]
 [ext_resource type="FontFile" uid="uid://0nyv3f3d683a" path="res://fonts/PixelOperator8-Bold.ttf" id="109_dy3km"]
 [ext_resource type="AudioStream" uid="uid://caudhqd4fwesj" path="res://sound/Start1.mp3" id="111_2y5kg"]
-[ext_resource type="AudioStream" path="res://sound/Start1.wav" id="112_xhjvk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w504m"]
 texture = ExtResource("3_7wqob")
@@ -770,90 +769,65 @@ sources/2 = SubResource("TileSetAtlasSource_f2drr")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wr43k"]
 
-[sub_resource type="Animation" id="Animation_5wpol"]
+[sub_resource type="Animation" id="Animation_xhjvk"]
+resource_name = "move"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.49, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-403, -381), Vector2(-403, -381), Vector2(-120, -654)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.49, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="Animation" id="Animation_tud08"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-403, -381)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(110, -121)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
-[sub_resource type="Animation" id="Animation_ypgrt"]
-resource_name = "zoom"
-length = 4.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-393, -515), Vector2(-393, -515), Vector2(-204, -742)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7wyqa"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2y5kg"]
 _data = {
-&"RESET": SubResource("Animation_5wpol"),
-&"zoom": SubResource("Animation_ypgrt")
+&"RESET": SubResource("Animation_tud08"),
+&"move": SubResource("Animation_xhjvk")
 }
 
 [node name="Node2D" type="Node2D"]
@@ -988,47 +962,45 @@ position = Vector2(491, 511)
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(7, -116)
 zoom = Vector2(0.7, 0.7)
+limit_left = -1600
+limit_top = -1000
+limit_right = 8500
+limit_bottom = 1100
 
 [node name="ScoreLabel" type="Label" parent="player/Camera2D"]
 offset_left = 440.0
-offset_top = -545.0
+offset_top = -541.0
 offset_right = 1104.0
-offset_bottom = -493.0
-theme_override_colors/font_color = Color(1, 0.74902, 0, 1)
+offset_bottom = -489.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("97_t0mm6")
 theme_override_font_sizes/font_size = 30
 text = "Your collected 0/? coins."
-
-[node name="LevelLabel" type="Label" parent="player"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 110.0
-offset_top = -121.0
-offset_right = 920.0
-offset_bottom = 122.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 40
-theme_override_fonts/font = ExtResource("109_dy3km")
-theme_override_font_sizes/font_size = 120
-text = "LEVEL-2"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="player/LevelLabel"]
-libraries = {
-&"": SubResource("AnimationLibrary_7wyqa")
-}
-autoplay = "zoom"
 
 [node name="Music" type="AudioStreamPlayer2D" parent="player"]
 position = Vector2(115, -314)
 stream = ExtResource("111_2y5kg")
 autoplay = true
 parameters/looping = true
+
+[node name="LevelLabel" type="Label" parent="player"]
+offset_left = -403.0
+offset_top = -381.0
+offset_right = 407.0
+offset_bottom = -261.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 25
+theme_override_fonts/font = ExtResource("109_dy3km")
+theme_override_font_sizes/font_size = 120
+text = "LEVEL-2"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player/LevelLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_2y5kg")
+}
+autoplay = "move"
 
 [node name="candy" type="Node" parent="."]
 
@@ -1081,5 +1053,4 @@ position = Vector2(5943, 256)
 position = Vector2(6615, 651)
 
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("112_xhjvk")
 autoplay = true
