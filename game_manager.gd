@@ -1,6 +1,8 @@
 extends Node
 
 @onready var scorelabel = $"../player/Camera2D/ScoreLabel"
+@onready var door = $"../Door"
+
 var total_candy = 0
 var collected_candy = 0
 
@@ -32,11 +34,15 @@ func collect_candy():
 	print("Your collected %d / %d coins." % [collected_candy, total_candy])
 
 	if collected_candy >= total_candy:
-		level_complete()
+		open_door()
+
+func open_door():
+	print("🚪 ประตูเปิดแล้ว (เล่น animation canPass)!")
+	if door and door.has_method("open_door"):
+		door.open_door()
 
 func level_complete():
 	print("congratulations!! ")
-
 	# หาว่าเรากำลังอยู่ด่านที่เท่าไรใน levels[]
 	var current_scene = get_tree().current_scene.scene_file_path
 	var current_index = levels.find(current_scene)
