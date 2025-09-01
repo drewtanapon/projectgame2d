@@ -112,7 +112,7 @@
 [ext_resource type="PackedScene" uid="uid://bxcgjf022e6lq" path="res://scenes/trap_3.tscn" id="109_vdsti"]
 [ext_resource type="PackedScene" uid="uid://dxpiqas17uy6r" path="res://scenes/trap_4.tscn" id="110_p5usg"]
 [ext_resource type="PackedScene" uid="uid://d3gk1s0rlh4i8" path="res://scenes/enemy2.tscn" id="111_652ow"]
-[ext_resource type="PackedScene" uid="uid://30l7m3djssbt" path="res://scenes/enemy_4.tscn" id="111_bjly0"]
+[ext_resource type="PackedScene" uid="uid://bglevr0h607jp" path="res://scenes/enemy_4.tscn" id="111_bjly0"]
 [ext_resource type="PackedScene" uid="uid://518rxmeoqsrd" path="res://scenes/enemy.tscn" id="113_p5usg"]
 [ext_resource type="PackedScene" uid="uid://ccciwh1eh1d0g" path="res://scenes/door.tscn" id="115_nry40"]
 
