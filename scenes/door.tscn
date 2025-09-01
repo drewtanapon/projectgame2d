@@ -100,7 +100,7 @@ shape = SubResource("RectangleShape2D_83dcw")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_hpvv5")
 region_enabled = true
-region_rect = Rect2(2209.85, 959.389, 128.502, 209.044)
+region_rect = Rect2(2209.85, 1218.53, 128.502, 210.563)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")

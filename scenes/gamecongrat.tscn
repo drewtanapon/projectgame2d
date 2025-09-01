@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtd4tkj104vwr"]
+[gd_scene load_steps=6 format=3 uid="uid://dtd4tkj104vwr"]
 
 [ext_resource type="Texture2D" uid="uid://wnbcicdt3114" path="res://assets/PNG/Backgrounds/blue_land.png" id="1_7vtdv"]
 [ext_resource type="Texture2D" uid="uid://ief775c6i2ee" path="res://assets/PNG/Backgrounds/blue_desert.png" id="2_qyuc3"]
 [ext_resource type="FontFile" uid="uid://vxrghr4oqby6" path="res://fonts/PixelOperator8-Bold(1).ttf" id="3_qyuc3"]
+[ext_resource type="AudioStream" uid="uid://b6mgqo5xwkp0s" path="res://sound/win.mp3" id="4_iewxt"]
 
 [sub_resource type="GDScript" id="GDScript_qyuc3"]
 script/source = "extends CanvasLayer
@@ -102,3 +103,8 @@ theme_override_colors/font_color = Color(0.811765, 0.541176, 0.133333, 1)
 theme_override_fonts/font = ExtResource("3_qyuc3")
 theme_override_font_sizes/font_size = 55
 text = "You are the winner"
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_iewxt")
+autoplay = true
+parameters/looping = true

@@ -33,7 +33,7 @@ func collect_candy():
 		scorelabel.text = "Your collected %d / %d coins." % [collected_candy, total_candy]
 	print("Your collected %d / %d coins." % [collected_candy, total_candy])
 
-	if collected_candy >= 1:
+	if collected_candy >= total_candy:
 		open_door()
 
 func open_door():

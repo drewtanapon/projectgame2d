@@ -1,4 +1,4 @@
-[gd_scene load_steps=221 format=4 uid="uid://c2283rwncs484"]
+[gd_scene load_steps=219 format=4 uid="uid://c2283rwncs484"]
 
 [ext_resource type="Script" uid="uid://lx48kuddr66m" path="res://game_manager.gd" id="1_4u181"]
 [ext_resource type="Texture2D" uid="uid://dtupvfu3vmygr" path="res://assets/sheet.png" id="1_5wf50"]
@@ -112,6 +112,7 @@
 [ext_resource type="FontFile" uid="uid://bke5biqxs0swd" path="res://fonts/PixelOperator8.ttf" id="110_ypgrt"]
 [ext_resource type="PackedScene" uid="uid://ccciwh1eh1d0g" path="res://scenes/door.tscn" id="111_5wpol"]
 [ext_resource type="FontFile" uid="uid://0nyv3f3d683a" path="res://fonts/PixelOperator8-Bold.ttf" id="112_7wyqa"]
+[ext_resource type="AudioStream" uid="uid://caudhqd4fwesj" path="res://sound/Start1.mp3" id="112_10gu7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uw4dv"]
 texture = ExtResource("1_5wf50")
@@ -948,91 +949,6 @@ _data = {
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_fpo7e"]
 
-[sub_resource type="Animation" id="Animation_5wpol"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(110, -121)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_ypgrt"]
-resource_name = "zoom"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.61, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0.1, 0.1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.61, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-393, -515), Vector2(-393, -515), Vector2(415, -127)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.61, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7wyqa"]
-_data = {
-&"RESET": SubResource("Animation_5wpol"),
-&"zoom": SubResource("Animation_ypgrt")
-}
-
 [node name="level_01" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
@@ -1165,30 +1081,49 @@ theme_override_fonts/font = ExtResource("100_geige")
 theme_override_font_sizes/font_size = 30
 text = "Your collected 0/? coins."
 
-[node name="LevelLabel" type="Label" parent="player"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 415.0
-offset_top = -127.0
-offset_right = 1225.0
-offset_bottom = 116.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
-theme_override_constants/shadow_outline_size = 40
-theme_override_fonts/font = ExtResource("112_7wyqa")
-theme_override_font_sizes/font_size = 120
-text = "LEVEL-1
-"
+[node name="Music" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2(115, -314)
+stream = ExtResource("112_10gu7")
+autoplay = true
+parameters/looping = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="player/LevelLabel"]
-libraries = {
-&"": SubResource("AnimationLibrary_7wyqa")
-}
-autoplay = "zoom"
+[node name="Label" type="Label" parent="player"]
+offset_left = -100.0
+offset_top = -442.0
+offset_right = 94.0
+offset_bottom = -419.0
+text = "LEVEL-1"
+
+[node name="takeCandy" type="Label" parent="."]
+offset_left = 683.0
+offset_top = 427.0
+offset_right = 1072.0
+offset_bottom = 450.0
+theme_override_colors/font_color = Color(0.890402, 0.595495, 0.260231, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = ExtResource("112_7wyqa")
+theme_override_font_sizes/font_size = 20
+text = "Collect candies to win"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1633.0
+offset_top = 542.0
+offset_right = 1883.0
+offset_bottom = 565.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("112_7wyqa")
+text = "don't touch this!!"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 3098.0
+offset_top = 355.0
+offset_right = 3566.0
+offset_bottom = 378.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("110_ypgrt")
+theme_override_font_sizes/font_size = 20
+text = "Don't let enemy touch you."
 
 [node name="howToMove" type="Label" parent="."]
 offset_left = -124.0
@@ -1201,21 +1136,3 @@ theme_override_font_sizes/font_size = 30
 text = "1. Press the left arrow key, right arrow  to move. 
 
 2. Press the space key to jump."
-
-[node name="takeCandy" type="Label" parent="."]
-offset_left = 628.0
-offset_top = 427.0
-offset_right = 1134.0
-offset_bottom = 450.0
-theme_override_colors/font_color = Color(0.881534, 0.627455, 0.0875336, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.454902)
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = ExtResource("110_ypgrt")
-text = "Collect all the candies to pass the level."
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="takeCandy"]
-libraries = {
-&"": SubResource("AnimationLibrary_7wyqa")
-}
-autoplay = "zoom"

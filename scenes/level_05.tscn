@@ -1,4 +1,4 @@
-[gd_scene load_steps=240 format=4 uid="uid://5d3ynjgwy2ek"]
+[gd_scene load_steps=241 format=4 uid="uid://5d3ynjgwy2ek"]
 
 [ext_resource type="Script" uid="uid://lx48kuddr66m" path="res://game_manager.gd" id="1_aljec"]
 [ext_resource type="Texture2D" uid="uid://46uitv83iga7" path="res://assets/PNG/Backgrounds/colored_shroom.png" id="1_fwn0g"]
@@ -115,6 +115,7 @@
 [ext_resource type="PackedScene" uid="uid://bxcgjf022e6lq" path="res://scenes/trap_3.tscn" id="113_hua3f"]
 [ext_resource type="PackedScene" uid="uid://dxpiqas17uy6r" path="res://scenes/trap_4.tscn" id="114_uy581"]
 [ext_resource type="PackedScene" uid="uid://ccciwh1eh1d0g" path="res://scenes/door.tscn" id="115_f8bsk"]
+[ext_resource type="AudioStream" uid="uid://ccj24db74efow" path="res://sound/Start3.mp3" id="116_hua3f"]
 
 [sub_resource type="Animation" id="Animation_f8bsk"]
 length = 0.001
@@ -903,6 +904,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_ypgrt"]
 resource_name = "zoom"
 length = 4.0
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -910,10 +912,10 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.61, 3, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0.1, 0.1)]
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -922,10 +924,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.61, 4),
+"times": PackedFloat32Array(0, 1, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(-393, -515), Vector2(-393, -515), Vector2(415, -127)]
+"values": [Vector2(-393, -515), Vector2(-393, -515), Vector2(-204, -742)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -934,10 +936,10 @@ tracks/2/path = NodePath(".:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.61, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, true, false]
+"values": [true, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7wyqa"]
@@ -1297,7 +1299,7 @@ tile_set = SubResource("TileSet_d4pp3")
 position = Vector2(1968, 568)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(6, -116)
+position = Vector2(7, -116)
 zoom = Vector2(0.7, 0.7)
 
 [node name="ScoreLabel" type="Label" parent="player/Camera2D"]
@@ -1315,10 +1317,10 @@ text = "Your collected 0/? coins."
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 415.0
-offset_top = -127.0
-offset_right = 1225.0
-offset_bottom = 116.0
+offset_left = 110.0
+offset_top = -121.0
+offset_right = 920.0
+offset_bottom = 122.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -1327,14 +1329,19 @@ theme_override_constants/outline_size = 10
 theme_override_constants/shadow_outline_size = 40
 theme_override_fonts/font = ExtResource("109_f8bsk")
 theme_override_font_sizes/font_size = 120
-text = "LEVEL-5
-"
+text = "LEVEL-5"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player/LevelLabel"]
 libraries = {
 &"": SubResource("AnimationLibrary_7wyqa")
 }
 autoplay = "zoom"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="player"]
+position = Vector2(115, -314)
+stream = ExtResource("116_hua3f")
+autoplay = true
+parameters/looping = true
 
 [node name="platform" type="Node2D" parent="."]
 

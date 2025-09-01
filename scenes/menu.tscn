@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwk10hkk8it81"]
+[gd_scene load_steps=6 format=3 uid="uid://bwk10hkk8it81"]
 
 [ext_resource type="Script" uid="uid://b38gcyvki828r" path="res://script/menu.gd" id="1_yqeox"]
 [ext_resource type="FontFile" uid="uid://bke5biqxs0swd" path="res://fonts/PixelOperator8.ttf" id="2_vjb58"]
 [ext_resource type="Texture2D" uid="uid://dac56xlnw0fga" path="res://assets/PNG/Backgrounds/colored_grass.png" id="3_mhnvy"]
 [ext_resource type="Texture2D" uid="uid://8rdv4bdp4c2k" path="res://assets/PNG/Backgrounds/colored_land.png" id="4_4ytvr"]
+[ext_resource type="AudioStream" uid="uid://caudhqd4fwesj" path="res://sound/Start1.mp3" id="5_4ytvr"]
 
 [node name="menu" type="Node2D"]
 script = ExtResource("1_yqeox")
@@ -65,6 +66,11 @@ texture = ExtResource("3_mhnvy")
 position = Vector2(-1056.06, 0.262817)
 scale = Vector2(1.06404, 0.999487)
 texture = ExtResource("4_4ytvr")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_4ytvr")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_pressed"]
