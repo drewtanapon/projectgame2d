@@ -119,6 +119,7 @@
 หน้าจอ Demo ฉากในเกม 
 หน้าเมนู
 ![Image 2](word/2.jpeg)
+
 หน้าเล่นเกม
 แสดงหน้าตัวอย่างการเล่น และ คำอธิบาย อย่างน้อย 3 หน้า
 
@@ -127,8 +128,11 @@
 Win
 ![Image 3](word/6.jpeg)
 
+
 Game Over
 ![Image 3](word/7.jpeg)
+
+
 VDO  (Link ไป clip vdo)
 
 อ้างอิง
