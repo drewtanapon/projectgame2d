@@ -24,7 +24,7 @@
 ตัวละคร:
 		player ,
   		enemy 
-![Image 1](word/1.jpeg)
+- ![Image 1](word/1.jpeg)
 
 รูปแบบการเล่น และ กติกา:
 		- ผู้เล่นบังคับตัวละคร
@@ -128,10 +128,8 @@
 Win
 ![Image 3](word/6.jpeg)
 
-
 Game Over
 ![Image 3](word/7.jpeg)
-
 
 VDO  (Link ไป clip vdo)
 
